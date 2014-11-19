@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, random
 from Butterfly import Butterfly
 from Player import Player
 from Wasp import Wasp
@@ -54,22 +54,22 @@ while True:
 		
 	if len(Butterflys) < 10:
 		if random.randint(0, .25*60) == 0:
-			Butterflys += [Butterfly("rsc/Butterfly/Butterfly.png",
+			Butterflys += [Butterfly("rsc/Butterfly/Butterfly.png"),
 					  [random.randint(0,10), random.randint(0,10)],
-					  [random.randint(100, width-100), random.randint(100, height-100)])
+					  [random.randint(100, width-100), random.randint(100, height-100)]
 					  ]
-	if timerWait < timerWaitMax:
+	'''if timerWait < timerWaitMax:
 		timerWait += 1
 	else:
 		timerWait = 0
 		timer.increaseScore(.1)
 	player.update(width, height)
-	timer.update()
+	timer.update()'''
 	for Butterfly in Butterflys:
 		Butterfly.update(width, height)
 	player.update(width, height)
 	for Butterfly in Butterflys:
-		ball.update(width, height)
+		Butterfly.update(width, height)
 		
 	for bully in Butterflys:
 		for victem in Butterflys:
