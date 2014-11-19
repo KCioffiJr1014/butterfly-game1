@@ -15,11 +15,11 @@ bgColor = r,g,b = 0, 0, 0
 bg =  pygame.image.load("rsc/Bg/Bg.png")
 bgRect = bg.get_rect()
 
-timer = Score([80, height - 25], "Time: ", 36)
-timerWait = 0
-timerWaitMax = 6
+#timer = Score([80, height - 25], "Time: ", 36)
+#timerWait = 0
+#timerWaitMax = 6
 
-Score = Score([80, height - 50], "Score: ", 36)
+#Score = Score([80, height - 50], "Score: ", 36)
 #if Butterfly = self.living = True:
 #Score = Score + 100
 
@@ -28,7 +28,7 @@ screen = pygame.display.set_mode(size)
 player = Player([width/2, height/2])
 
 Butterflys = []
-Butterflys += [Butterfly("images/Ball/Butterfly.png",[1,2], [100, 125])]
+Butterflys += [Butterfly("rsc/Butterfly/Butterfly.png",[1,2], [100, 125])]
 
 while True:
 	for event in pygame.event.get():
@@ -54,7 +54,7 @@ while True:
 		
 	if len(Butterflys) < 10:
 		if random.randint(0, .25*60) == 0:
-			Butterflys += [Butterfly("Butterfly/rsc/Butterfly/Butterfly.png",
+			Butterflys += [Butterfly("rsc/Butterfly/Butterfly.png",
 					  [random.randint(0,10), random.randint(0,10)],
 					  [random.randint(100, width-100), random.randint(100, height-100)])
 					  ]
@@ -85,7 +85,7 @@ while True:
 	screen.blit(bg,bgRect)
 	for ball in balls:
 		screen.blit(Butterfly.image, Butterfly.rect)
-	screen.blit(player.image, player.rect)
+	screen.blit(Player.image, player.rect)
 	screen.blit(timer.image, timer.rect)
 	screen.blit(Score.image, Score.rect)
 	pygame.display.flip()

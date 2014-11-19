@@ -2,15 +2,14 @@ import pygame, math
 
 class Player():
     def __init__(self, pos):
-        Ball.__init__(self, "images/Player/Back.png", [0,0], pos)
-        self.upImages = [pygame.image.load("images/Player/MU.png"),
-						 pygame.image.load("images/Player/MU2.png")]
-        self.downImages = [pygame.image.load("images/Player/MD.png"),
-                           pygame.image.load("images/Player/MD2.png")]
-        self.leftImages = [pygame.image.load("images/Player/ML.png"),
-                           pygame.image.load("images/Player/ML2.png")]
-        self.rightImages = [pygame.image.load("images/Player/MR.png"),
-                            pygame.image.load("images/Player/MR2.png")]
+        self.upImages = [pygame.image.load("rsc/Player/MU.png"),
+						 pygame.image.load("rsc/Player/MU2.png")]
+        self.downImages = [pygame.image.load("rsc/Player/MD.png"),
+                           pygame.image.load("rsc/Player/MD2.png")]
+        self.leftImages = [pygame.image.load("rsc/Player/ML.png"),
+                           pygame.image.load("rsc/Player/ML2.png")]
+        self.rightImages = [pygame.image.load("rsc/Player/MR.png"),
+                            pygame.image.load("rsc/Player/MR2.png")]
         self.facing = "up"
         self.changed = False
         self.images = self.upImages
@@ -19,11 +18,11 @@ class Player():
         self.waitCount = 0
         self.maxWait = 60*.9
         self.image = self.images[self.frame]
-        self.rect = self.image.get_rect(center = self.rect.center)
+        self.rect = self.image.get_rect()
         self.maxSpeed = 10
             
     def update(self, width, height):
-        Ball.update(self, width, height)
+        Player.update(self, width, height)
         self.animate()
         self.facingChanged = False
         
