@@ -20,9 +20,9 @@ class Player():
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect()
         self.maxSpeed = 10
+        self.radius = 20
             
     def update(self, width, height):
-        Player.update(self, width, height)
         self.animate()
         self.facingChanged = False
         

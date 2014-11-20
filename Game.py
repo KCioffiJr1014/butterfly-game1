@@ -27,8 +27,8 @@ screen = pygame.display.set_mode(size)
 
 player = Player([width/2, height/2])
 
-Butterflys = []
-Butterflys += [Butterfly("rsc/Butterfly/Butterfly.png",[1,2], [100, 125])]
+butterflys = []
+butterflys += [Butterfly("rsc/Butterfly/Butterfly2.png",[1,2], [100, 125])]
 
 while True:
 	for event in pygame.event.get():
@@ -52,12 +52,12 @@ while True:
 			if event.key == pygame.K_a or event.key == pygame.K_LEFT:
 				player.go("stop left")
 		
-	if len(Butterflys) < 10:
+	if len(butterflys) < 10:
 		if random.randint(0, .25*60) == 0:
-			Butterflys += [Butterfly("rsc/Butterfly/Butterfly.png"),
+			butterflys += [Butterfly("rsc/Butterfly/Butterfly.png",
 					  [random.randint(0,10), random.randint(0,10)],
 					  [random.randint(100, width-100), random.randint(100, height-100)]
-					  ]
+					  )]
 	'''if timerWait < timerWaitMax:
 		timerWait += 1
 	else:
@@ -65,29 +65,30 @@ while True:
 		timer.increaseScore(.1)
 	player.update(width, height)
 	timer.update()'''
-	for Butterfly in Butterflys:
-		Butterfly.update(width, height)
+	print butterflys
+	for butterfly in butterflys:
+		butterfly.update(width, height)
 	player.update(width, height)
-	for Butterfly in Butterflys:
-		Butterfly.update(width, height)
+	for butterfly in butterflys:
+		butterfly.update(width, height)
 		
-	for bully in Butterflys:
-		for victem in Butterflys:
+	for bully in butterflys:
+		for victem in butterflys:
 			bully.collideButterfly(victem)
 			bully.collidePlayer(player)
 	
-	for Butterfly in Butterflys:
-		if not Butterfly.living:
-			Butterflys.remove(Butterfly)
+	for butterfly in butterflys:
+		if not butterfly.living:
+			butterflys.remove(butterfly)
 	
 	bgColor = r,g,b
 	screen.fill(bgColor)
 	screen.blit(bg,bgRect)
-	for ball in balls:
-		screen.blit(Butterfly.image, Butterfly.rect)
-	screen.blit(Player.image, player.rect)
-	screen.blit(timer.image, timer.rect)
-	screen.blit(Score.image, Score.rect)
+	for butterfly in butterflys:
+		screen.blit(butterfly.image, butterfly.rect)
+	screen.blit(player.image, player.rect)
+	#screen.blit(timer.image, timer.rect)
+	#screen.blit(Score.image, Score.rect)
 	pygame.display.flip()
 	clock.tick(60)
 		
