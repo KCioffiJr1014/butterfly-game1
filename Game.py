@@ -32,6 +32,7 @@ player = Player([width/2, height/2])
 butterflys = []
 butterflys += [Butterfly("rsc/Butterfly/Butterfly2.png",[1,2], [100, 125])]
 
+
 while True:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT: sys.exit()
@@ -73,16 +74,16 @@ while True:
 	player.update(width, height)
 	for butterfly in butterflys:
 		butterfly.update(width, height)
-		
+			
 	for bully in butterflys:
 		for victem in butterflys:
 			bully.collideButterfly(victem)
 			bully.collidePlayer(player)
-	
+		
 	for butterfly in butterflys:
 		if not butterfly.living:
 			butterflys.remove(butterfly)
-	
+		
 	bgColor = r,g,b
 	screen.fill(bgColor)
 	screen.blit(bg,bgRect)
