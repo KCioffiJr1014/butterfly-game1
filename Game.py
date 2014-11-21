@@ -2,6 +2,7 @@ import pygame, sys, random
 from Butterfly import Butterfly
 from Player import Player
 from Wasp import Wasp
+from HUD import *
 #from QueenWasp import QueenWasp
 
 pygame.init()
