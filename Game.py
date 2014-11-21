@@ -12,8 +12,8 @@ width = 800
 height = 600
 size = width, height
 bgColor = r,g,b = 0, 0, 0
-bg =  pygame.image.load("rsc/Bg/Bg.png")
-bgRect = bg.get_rect()
+#bg =  pygame.image.load("rsc/Bg/Bg.png")
+#bgRect = bg.get_rect()
 
 #timer = Score([80, height - 25], "Time: ", 36)
 #timerWait = 0
@@ -83,12 +83,21 @@ while True:
 	
 	bgColor = r,g,b
 	screen.fill(bgColor)
+<<<<<<< Updated upstream
 	screen.blit(bg,bgRect)
 	for butterfly in butterflys:
 		screen.blit(butterfly.image, butterfly.rect)
 	screen.blit(player.image, player.rect)
 	#screen.blit(timer.image, timer.rect)
 	#screen.blit(Score.image, Score.rect)
+=======
+	#screen.blit(bg,bgRect)
+	for Butterfly in Butterflys:
+		screen.blit(Butterfly.image, Butterfly.rect)
+	screen.blit(Player.image, player.rect)
+	screen.blit(timer.image, timer.rect)
+	screen.blit(Score.image, Score.rect)
+>>>>>>> Stashed changes
 	pygame.display.flip()
 	clock.tick(60)
 		
