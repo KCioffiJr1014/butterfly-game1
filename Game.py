@@ -14,7 +14,7 @@ width = 800
 height = 600
 size = width, height
 bgColor = r,g,b = 0, 0, 0
-bg =  pygame.image.load("rsc/Bg/Bg.png")
+bg =  pygame.image.load("rsc/Background/Bg.png")
 bgRect = bg.get_rect()
 
 #timer = Score([80, height - 25], "Time: ", 36)
