@@ -12,14 +12,14 @@ width = 800
 height = 600
 size = width, height
 bgColor = r,g,b = 0, 0, 0
-#bg =  pygame.image.load("rsc/Bg/Bg.png")
-#bgRect = bg.get_rect()
+bg =  pygame.image.load("rsc/Bg/Bg.png")
+bgRect = bg.get_rect()
 
-timer = Score([80, height - 25], "Time: ", 36)
-timerWait = 0
-timerWaitMax = 6
+#timer = Score([80, height - 25], "Time: ", 36)
+#timerWait = 0
+#timerWaitMax = 6
 
-Score = Score([80, height - 50], "Score: ", 36)
+#Score = Score([80, height - 50], "Score: ", 36)
 
 
 screen = pygame.display.set_mode(size)
@@ -57,13 +57,13 @@ while True:
 					  [random.randint(0,10), random.randint(0,10)],
 					  [random.randint(100, width-100), random.randint(100, height-100)]
 					  )]
-	if timerWait < timerWaitMax:
-		timerWait += 1
-	else:
-		timerWait = 0
-		timer.increaseScore(.1)
+	#if timerWait < timerWaitMax:
+	#	timerWait += 1
+	#else:
+	#	timerWait = 0
+	#	timer.increaseScore(.1)
 	player.update(width, height)
-	timer.update()
+	#timer.update()
 	print butterflys
 	for butterfly in butterflys:
 		butterfly.update(width, height)
@@ -82,17 +82,11 @@ while True:
 	
 	bgColor = r,g,b
 	screen.fill(bgColor)
-	#screen.blit(bg,bgRect)
-	for butterfly in butterflys:
-		screen.blit(butterfly.image, butterfly.rect)
-	screen.blit(player.image, player.rect)
-	screen.blit(timer.image, timer.rect)
-	screen.blit(Score.image, Score.rect)
-	#screen.blit(bg,bgRect)
-	#for Butterfly in Butterflys:
-		#screen.blit(Butterfly.image, Butterfly.rect)
+	screen.blit(bg,bgRect)
+	for Butterfly in Butterflys:
+		screen.blit(Butterfly.image, Butterfly.rect)
 	screen.blit(Player.image, player.rect)
-	screen.blit(timer.image, timer.rect)
-	screen.blit(Score.image, Score.rect)
+	#screen.blit(timer.image, timer.rect)
+	#screen.blit(Score.image, Score.rect)
 	pygame.display.flip()
 	clock.tick(60)
