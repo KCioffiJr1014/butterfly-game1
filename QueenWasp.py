@@ -4,7 +4,7 @@ from Wasp import Wasp
 
 class QueenWasp(Wasp):
 	def __init__(self, image, speed = [0,0], pos = [0,0]):
-		self.image = pygame.image.load(rsc/Wasp/QueenWasp.png)
+		self.image = pygame.image.load("rsc/Wasp/QueenWasp.png")
 		self.rect = self.image.get_rect()
 		self.speedx = speed[0]
 		self.speedy = speed[0]
