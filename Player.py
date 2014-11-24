@@ -3,7 +3,7 @@ import pygame, math
 class Player():
     def __init__(self, pos):
         self.upImages = [pygame.image.load("rsc/Player/MU.png"),
-						 pygame.image.load("rsc/Player/MU2.png")]
+                         pygame.image.load("rsc/Player/MU2.png")]
         self.downImages = [pygame.image.load("rsc/Player/MD.png"),
                            pygame.image.load("rsc/Player/MD2.png")]
         self.leftImages = [pygame.image.load("rsc/Player/ML.png"),
@@ -20,10 +20,25 @@ class Player():
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect()
         self.maxSpeed = 10
+        self.speedx = 0
+        self.speedy = 0
+        self.speed = [self.speedx, self.speedy]
         self.radius = 20
+        self.didBounceX = False
+        self.didBounceY = False
+        
+    
     def update(self, width, height):
+        self.didBounceX = False
+        self.didBounceY = False
+        self.speed = [self.speedx, self.speedy]
+        self.move()
+        self.collideWall(width, height)
         self.animate()
         self.facingChanged = False
+   
+    def move(self):
+        self.rect = self.rect.move(self.speed)
         
     def collideWall(self, width, height):
         if not self.didBounceX:
@@ -67,7 +82,7 @@ class Player():
             self.changed = True
             self.speedy = -self.maxSpeed
         elif direction == "stop up":
-            self.speedy = self.maxSpeed
+            self.speedy = 0
         elif direction == "down":
             self.facing = "down"
             self.changed = True
@@ -87,17 +102,17 @@ class Player():
             self.speedx = -self.maxSpeed
         elif direction == "stop left":
             self.speedx = 0
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
