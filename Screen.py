@@ -24,14 +24,10 @@ class Screen():
         self.value = 0
         self.neg = False
         self.upframe = False
-        self.countframe = 0
 
 
     def place(self, pt):
         self.rect = self.rect.move(pt)
-        
-    def place2(self, other):
-        self.rect.center = other.rect.center     
         
     def check(self, effect):    
         if self.frame == self.maxFrame:
@@ -47,38 +43,27 @@ class Screen():
             
     def animate(self):
         if self.upframe == True:
-            if self.frame + self.countframe <= self.maxFrame:
-                self.frame += self.countframe
+            if self.frame < self.maxFrame:
+                self.frame += 1
             else:
                 self.frame = 0
             self.upframe = False
             self.surface = self.surfaces[self.frame]
             
-    def animate2(self, other):
-        if self.upframe == True:
-            self.value += 1
-            if self.frame + self.countframe <= self.maxFrame and self.frame + self.countframe >= 0:
-                self.frame += self.countframe
-            elif self.frame + self.countframe > self.maxFrame:
-                self.frame = self.maxFrame
-            elif self.frame >= self.maxFrame:
-                other.living = False
-            else:
-                self.countframe -= self.value
-            self.upframe = False
-            self.surface = self.surfaces[self.frame]
-            
-    # def update(self, other):
-        # if self.frame < self.maxFrame and self.select == True:
-            # self.frame += 1
-            # other.frame += 1
-        # if self.frame == self.maxFrame and self.select == True or other.frame == other.maxFrame and other.select == True:
-           # other.frame = 0
-           # self.frame = 0
-        # self.surface = self.surfaces[self.frame]
-        # other.surface = other.surfaces[other.frame]
-        
 
+    def update(self, other):
+        if self.frame < self.maxFrame and self.select == True:
+            self.frame += 1
+            other.frame += 1
+        if self.frame == self.maxFrame and self.select == True or other.frame == other.maxFrame and other.select == True:
+           other.frame = 0
+           self.frame = 0
+        self.surface = self.surfaces[self.frame]
+        other.surface = other.surfaces[other.frame]
+        
+    def reset(self):
+        self.frame = 0
+        self.value = 0
 
 
     def distToPoint(self, pt):
@@ -115,4 +100,3 @@ class Screen():
                 self.frame = 0
                 # self.living = False
             self.surface = self.surfaces[self.frame]
-            

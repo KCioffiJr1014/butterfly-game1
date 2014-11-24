@@ -2,8 +2,8 @@ import pygame, sys, random
 from Butterfly import Butterfly
 from Player import Player
 from Wasp import Wasp
-#from Screen import Screen
-#from Menu import Button
+from Screen import Screen
+from Menu import Button
 #from QueenWasp import QueenWasp
 
 pygame.init()
@@ -16,6 +16,53 @@ size = width, height
 bgColor = r,g,b = 0, 0, 0
 bg =  pygame.image.load("rsc/Background/Bg.png")
 bgRect = bg.get_rect()
+
+background = Screen(["rsc/Player/MD.png"], [0,0], size, 10)
+singleplayer = Button("Play", [350, 175], (0, 100, 100))
+endscreen = Screen(["rsc/Player/deadscreen.png"], [0,0], size, 10)
+#MENU----------------
+while True:
+    while not run and player.living:
+        #print run, player.living
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if (event.key == pygame.K_UP or event.key == pygame.K_w) and not singleplayer.highlighted:
+                    singleplayer.highlighted = True
+                    exit.highlighted = False
+                elif event.key == pygame.K_DOWN or event.key == pygame.K_s and not exit.highlighted:
+                    exit.highlighted = True
+                    singleplayer.highlighted = False
+                elif event.key == pygame.K_SPACE and exit.highlighted == True:
+                    sys.exit()
+                elif event.key == pygame.K_SPACE and singleplayer.highlighted == True:
+                    run = True
+            elif event.type == pygame.MOUSEMOTION:
+                if singleplayer.collidePt(event.pos):
+                    singleplayer.highlighted = True
+                    exit.highlighted = False
+                elif exit.collidePt(event.pos):
+                    singleplayer.highlighted = False
+                    exit.highlighted = True
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    if singleplayer.collidePt(event.pos):
+                        singleplayer.clicked = True
+                        run = True
+                    elif exit.collidePt(event.pos):
+                        exit.clicked = True
+                        sys.exit()
+                        
+#----------------------------------------------------
+        singleplayer.update((200, 10, 10))
+        exit.update((200, 10, 10))
+        
+        screen.fill(bgColor)
+        screen.blit(singleplayer.surface, singleplayer.rect)
+        screen.blit(exit.surface, exit.rect)
+        pygame.display.flip()
+			
+		
 
 #timer = Score([80, height - 25], "Time: ", 36)
 #timerWait = 0
