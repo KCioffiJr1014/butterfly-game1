@@ -17,6 +17,7 @@ bgColor = r,g,b = 0, 0, 0
 bg =  pygame.image.load("rsc/Background/Bg.png")
 bgRect = bg.get_rect()
 
+'''
 background = Screen(["rsc/Player/MD.png"], [0,0], size, 10)
 singleplayer = Button("Play", [350, 175], (0, 100, 100))
 endscreen = Screen(["rsc/Player/deadscreen.png"], [0,0], size, 10)
@@ -60,7 +61,7 @@ while True:
         screen.fill(bgColor)
         screen.blit(singleplayer.surface, singleplayer.rect)
         screen.blit(exit.surface, exit.rect)
-        pygame.display.flip()
+        pygame.display.flip()'''
 			
 		
 
