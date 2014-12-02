@@ -17,66 +17,6 @@ bgColor = r,g,b = 0, 0, 0
 bg =  pygame.image.load("rsc/Background/Bg.png")
 bgRect = bg.get_rect()
 
-'''
-background = Screen(["rsc/Player/MD.png"], [0,0], size, 10)
-singleplayer = Button("Play", [350, 175], (0, 100, 100))
-endscreen = Screen(["rsc/Player/deadscreen.png"], [0,0], size, 10)
-#MENU----------------
-while True:
-    while not run and player.living:
-        #print run, player.living
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT: sys.exit()
-            elif event.type == pygame.KEYDOWN:
-                if (event.key == pygame.K_UP or event.key == pygame.K_w) and not singleplayer.highlighted:
-                    singleplayer.highlighted = True
-                    exit.highlighted = False
-                elif event.key == pygame.K_DOWN or event.key == pygame.K_s and not exit.highlighted:
-                    exit.highlighted = True
-                    singleplayer.highlighted = False
-                elif event.key == pygame.K_SPACE and exit.highlighted == True:
-                    sys.exit()
-                elif event.key == pygame.K_SPACE and singleplayer.highlighted == True:
-                    run = True
-            elif event.type == pygame.MOUSEMOTION:
-                if singleplayer.collidePt(event.pos):
-                    singleplayer.highlighted = True
-                    exit.highlighted = False
-                elif exit.collidePt(event.pos):
-                    singleplayer.highlighted = False
-                    exit.highlighted = True
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    if singleplayer.collidePt(event.pos):
-                        singleplayer.clicked = True
-                        run = True
-                    elif exit.collidePt(event.pos):
-                        exit.clicked = True
-                        sys.exit()
-                        
-#----------------------------------------------------
-        singleplayer.update((200, 10, 10))
-        exit.update((200, 10, 10))
-        
-        screen.fill(bgColor)
-        screen.blit(singleplayer.surface, singleplayer.rect)
-        screen.blit(exit.surface, exit.rect)
-        pygame.display.flip()'''
-			
-		
-=======
-
-
->>>>>>> origin/master
-
-#timer = Score([80, height - 25], "Time: ", 36)
-#timerWait = 0
-#timerWaitMax = 6
-
-#Score = Score([80, height - 50], "Score: ", 36)
-#if Butterfly = self.living = True:
-#Score = Score + 100
-
 screen = pygame.display.set_mode(size)
 
 player = Player([width/2, height/2])
@@ -147,6 +87,8 @@ while True:
     player.update(width, height)
     for butterfly in butterflys:
         butterfly.update(width, height)
+    for wasp in wasps:
+        wasp.update(width, height)
 
     print "update:", time.time()-st
     for bully in butterflys:
@@ -164,7 +106,7 @@ while True:
         if not butterfly.living:
             butterflys.remove(butterfly)
     for wasp in wasps:
-        if not wasps.living:
+        if not wasp.living:
             wasps.remove(wasp)
     
     print "die:", time.time()-st
