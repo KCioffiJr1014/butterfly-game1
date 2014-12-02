@@ -52,6 +52,7 @@ class Wasp():
 							self.didBounceY = True
 							#print "hit wasp"
 							
+							
 	def collidePlayer(self, other):
 		if self != other:
 			if self.rect.right > other.rect.left and self.rect.left < other.rect.right:

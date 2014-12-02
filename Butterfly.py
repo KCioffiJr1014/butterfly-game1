@@ -50,7 +50,7 @@ class Butterfly():
 						if not self.didBounceY:
 							self.speedy = -self.speedy
 							self.didBounceY = True
-							#print "hit Ball"
+							#print "hit butterfly"
 							
 	def collidePlayer(self, other):
 		if self != other:
