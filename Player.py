@@ -16,7 +16,7 @@ class Player():
         self.frame = 0
         self.maxFrame = len(self.images) - 1
         self.waitCount = 0
-        self.maxWait = 60*.1
+        self.maxWait = 60*.25
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect()
         self.maxSpeed = 10

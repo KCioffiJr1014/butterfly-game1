@@ -14,15 +14,78 @@ width = 800
 height = 600
 size = width, height
 bgColor = r,g,b = 0, 0, 0
-bg =  pygame.image.load("rsc/Background/Bg.png")
+bg =  pygame.image.load("rsc/Background/BG2.png")
 bgRect = bg.get_rect()
 
+<<<<<<< HEAD
+
+'''
+background = Screen(["rsc/Player/MD.png"], [0,0], size, 10)
+singleplayer = Button("Play", [350, 175], (0, 100, 100))
+endscreen = Screen(["rsc/Player/deadscreen.png"], [0,0], size, 10)
+#MENU----------------
+while True:
+    while not run and player.living:
+        #print run, player.living
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if (event.key == pygame.K_UP or event.key == pygame.K_w) and not singleplayer.highlighted:
+                    singleplayer.highlighted = True
+                    exit.highlighted = False
+                elif event.key == pygame.K_DOWN or event.key == pygame.K_s and not exit.highlighted:
+                    exit.highlighted = True
+                    singleplayer.highlighted = False
+                elif event.key == pygame.K_SPACE and exit.highlighted == True:
+                    sys.exit()
+                elif event.key == pygame.K_SPACE and singleplayer.highlighted == True:
+                    run = True
+            elif event.type == pygame.MOUSEMOTION:
+                if singleplayer.collidePt(event.pos):
+                    singleplayer.highlighted = True
+                    exit.highlighted = False
+                elif exit.collidePt(event.pos):
+                    singleplayer.highlighted = False
+                    exit.highlighted = True
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    if singleplayer.collidePt(event.pos):
+                        singleplayer.clicked = True
+                        run = True
+                    elif exit.collidePt(event.pos):
+                        exit.clicked = True
+                        sys.exit()
+                        
+#----------------------------------------------------
+        singleplayer.update((200, 10, 10))
+        exit.update((200, 10, 10))
+        
+        screen.fill(bgColor)
+        screen.blit(singleplayer.surface, singleplayer.rect)
+        screen.blit(exit.surface, exit.rect)
+        pygame.display.flip()'''
+			
+		
+
+
+
+
+#timer = Score([80, height - 25], "Time: ", 36)
+#timerWait = 0
+#timerWaitMax = 6
+
+#Score = Score([80, height - 50], "Score: ", 36)
+#if Butterfly = self.living = True:
+#Score = Score + 100
+
+=======
+>>>>>>> origin/master
 screen = pygame.display.set_mode(size)
 
 player = Player([width/2, height/2])
 
 butterflys = []
-butterflys += [Butterfly("rsc/Butterfly/Butterfly2.png",[1,2], [100, 125])]
+butterflys += [Butterfly("rsc/Butterfly/Butterfly.png",[1,2], [100, 125])]
 
 wasps = []
 wasps += [Wasp("rsc/Wasp/Wasp.png",[1,2], [100, 125])]
@@ -66,7 +129,7 @@ while True:
     print "controls:", time.time()-st
     if len(butterflys) < 10:
         if random.randint(0, .25*60) == 0:
-            butterflys += [Butterfly("rsc/Butterfly/Butterfly.png",
+            butterflys += [Butterfly("rsc/Butterfly/Butterfly2.png",
                       [random.randint(0,10), random.randint(0,10)],
                       [random.randint(100, width-100), random.randint(100, height-100)]
                       )]
