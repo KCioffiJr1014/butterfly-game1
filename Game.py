@@ -14,10 +14,10 @@ width = 800
 height = 600
 size = width, height
 bgColor = r,g,b = 0, 0, 0
-bg =  pygame.image.load("rsc/Background/Bg.png")
+bg =  pygame.image.load("rsc/Background/BG2.png")
 bgRect = bg.get_rect()
 
-<<<<<<< HEAD
+
 '''
 background = Screen(["rsc/Player/MD.png"], [0,0], size, 10)
 singleplayer = Button("Play", [350, 175], (0, 100, 100))
@@ -65,10 +65,9 @@ while True:
         pygame.display.flip()'''
 			
 		
-=======
 
 
->>>>>>> origin/master
+
 
 #timer = Score([80, height - 25], "Time: ", 36)
 #timerWait = 0
