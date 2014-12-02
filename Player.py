@@ -28,6 +28,15 @@ class Player():
         self.didBounceY = False
         self.health = 20
         self.maxHealth = 20
+        self.living = True
+        
+    def modifyHealth (self, amount):    
+    self.health += amount
+    if self.health <= 0:
+        self.health = 0
+        self.living = False
+    elif self.health >= self.maxHealth:
+        self.health = self.maxHealth
         
     
     def update(self, width, height):
