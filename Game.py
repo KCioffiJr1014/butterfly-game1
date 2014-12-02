@@ -82,7 +82,7 @@ screen = pygame.display.set_mode(size)
 player = Player([width/2, height/2])
 
 butterflys = []
-butterflys += [Butterfly("rsc/Butterfly/Butterfly2.png",[1,2], [100, 125])]
+butterflys += [Butterfly("rsc/Butterfly/Butterfly.png",[1,2], [100, 125])]
 
 
 while True:
@@ -124,7 +124,7 @@ while True:
     print "controls:", time.time()-st
     if len(butterflys) < 10:
         if random.randint(0, .25*60) == 0:
-            butterflys += [Butterfly("rsc/Butterfly/Butterfly.png",
+            butterflys += [Butterfly("rsc/Butterfly/Butterfly2.png",
                       [random.randint(0,10), random.randint(0,10)],
                       [random.randint(100, width-100), random.randint(100, height-100)]
                       )]
