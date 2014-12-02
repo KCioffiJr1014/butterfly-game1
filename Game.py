@@ -85,6 +85,8 @@ player = Player([width/2, height/2])
 butterflys = []
 butterflys += [Butterfly("rsc/Butterfly/Butterfly2.png",[1,2], [100, 125])]
 
+wasps = []
+wasps += [Wasp("rsc/Wasp/Wasp.png",[1,2], [100, 125])]
 
 while True:
     st = time.time()
@@ -129,6 +131,12 @@ while True:
                       [random.randint(0,10), random.randint(0,10)],
                       [random.randint(100, width-100), random.randint(100, height-100)]
                       )]
+    if len(wasps) < 10:
+        if random.randint(0, .25*60) == 0:
+            wasps += [Wasp("rsc/Wasp/Wasp.png",
+                      [random.randint(0,10), random.randint(0,10)],
+                      [random.randint(100, width-100), random.randint(100, height-100)]
+                      )]
     '''if timerWait < timerWaitMax:
         timerWait += 1
     else:
@@ -146,11 +154,19 @@ while True:
         for victem in butterflys:
             bully.collideButterfly(victem)
             bully.collidePlayer(player)
+    for bully in wasps:
+        for victem in wasps:
+            bully.collideWasp(victem)
+            bully.collidePlayer(player)
+        
 
     print "collide:", time.time()-st
     for butterfly in butterflys:
         if not butterfly.living:
             butterflys.remove(butterfly)
+    for wasp in wasps:
+        if not wasps.living:
+            wasps.remove(wasp)
     
     print "die:", time.time()-st
     bgColor = r,g,b
@@ -158,6 +174,8 @@ while True:
     screen.blit(bg,bgRect)
     for butterfly in butterflys:
         screen.blit(butterfly.image, butterfly.rect)
+    for wasp in wasps:
+        screen.blit(wasp.image, wasp.rect)
     screen.blit(player.image, player.rect)
         #screen.blit(timer.image, timer.rect)
         #screen.blit(Score.image, Score.rect)
