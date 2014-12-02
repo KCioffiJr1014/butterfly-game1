@@ -26,6 +26,8 @@ class Player():
         self.radius = 20
         self.didBounceX = False
         self.didBounceY = False
+        self.health = 20
+        self.maxHealth = 20
         
     
     def update(self, width, height):
