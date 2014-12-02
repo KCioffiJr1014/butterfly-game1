@@ -17,7 +17,7 @@ bgColor = r,g,b = 0, 0, 0
 bg =  pygame.image.load("rsc/Background/BG2.png")
 bgRect = bg.get_rect()
 
-<<<<<<< HEAD
+
 
 '''
 background = Screen(["rsc/Player/MD.png"], [0,0], size, 10)
@@ -78,8 +78,8 @@ while True:
 #if Butterfly = self.living = True:
 #Score = Score + 100
 
-=======
->>>>>>> origin/master
+
+
 screen = pygame.display.set_mode(size)
 
 player = Player([width/2, height/2])
