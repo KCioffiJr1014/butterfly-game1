@@ -4,6 +4,7 @@ from Player import Player
 from Wasp import Wasp
 from Screen import Screen
 from Menu import Button
+from health import HealthBar
 #from QueenWasp import QueenWasp
 
 pygame.init()
@@ -83,6 +84,9 @@ while True:
 screen = pygame.display.set_mode(size)
 
 player = Player([width/2, height/2])
+
+healthbar = HealthBar([screenWidth - 75, 75]) #DEFAULT: 100 MODED: 200
+                                    #600
 
 butterflys = []
 butterflys += [Butterfly("rsc/Butterfly/Butterfly.png",[1,2], [100, 125])]
@@ -171,11 +175,16 @@ while True:
     for wasp in wasps:
         if not wasp.living:
             wasps.remove(wasp)
+            
+    if player.health <= 0:
+            player.living = False
+            
     
     print "die:", time.time()-st
     bgColor = r,g,b
     screen.fill(bgColor)
     screen.blit(bg,bgRect)
+    screen.blit(healthbar.surface, healthbar.rect)
     for butterfly in butterflys:
         screen.blit(butterfly.image, butterfly.rect)
     for wasp in wasps:
