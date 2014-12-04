@@ -3,29 +3,26 @@ import pygame,math,sys,random
 class WaspHealthBar():
     def __init__(self, wasp):
         self.surfaces = []
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/Dead.png")] #1
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/1%.png")]   #2
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/5%.png")]   #3
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/10%.png")]  #4
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/15%.png")]  #5
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/20%.png")]  #6
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/25%.png")]  #7
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/30%.png")]  #8
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/35%.png")]  #9
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/40%.png")]  #10
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/45%.png")]  #11
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/50%.png")]  #12
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/55%.png")]  #13
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/60%.png")]  #14
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/65%.png")]  #15
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/70%.png")]  #16
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/75%.png")]  #17
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/80%.png")]  #18
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/85%.png")]  #19
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/90%.png")]  #20
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/95%.png")]  #21
-        self.surfaces += [pygame.image.load("rsc/Zombies/Health/100%.png")]  #22
-        
+        self.surfaces += [pygame.image.load("rsc/Health/0%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/5%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/10%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/15%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/20%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/25%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/30%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/35%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/40%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/45%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/55%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/60%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/65%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/70%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/75%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/80%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/85%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/90%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/95%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/100%.png")]
         
         
         self.maxFrame = len(self.surfaces)-1
@@ -47,47 +44,65 @@ class WaspHealthBar():
     def update(self):
         percentLife = float(self.wasp.life)/float(self.wasp.maxLife)
         if percentLife > .95:
-            self.frame = 20
-        elif percentLife > .90:
             self.frame = 19
-        elif percentLife > .85:
+            print percentLife
+        elif percentLife > .90:
             self.frame = 18
-        elif percentLife > .80:
+            print percentLife
+        elif percentLife > .85:
             self.frame = 17
-        elif percentLife > .75:
+            print percentLife
+        elif percentLife > .80:
             self.frame = 16
-        elif percentLife > .70:
+            print percentLife
+        elif percentLife > .75:
             self.frame = 15
-        elif percentLife > .65:
+            print percentLife
+        elif percentLife > .70:
             self.frame = 14
-        elif percentLife > .60:
+            print percentLife
+        elif percentLife > .65:
             self.frame = 13
-        elif percentLife > .55:
+            print percentLife
+        elif percentLife > .60:
             self.frame = 12
+            print percentLife
         elif percentLife > .50:
             self.frame = 11
+            print percentLife
         elif percentLife > .45:
             self.frame = 10
+            print percentLife
         elif percentLife > .40:
             self.frame = 9
+            print percentLife
         elif percentLife > .35:
             self.frame = 8
+            print percentLife
         elif percentLife > .30:
             self.frame = 7
+            print percentLife
         elif percentLife > .25:
             self.frame = 6
+            print percentLife
         elif percentLife > .20:
             self.frame = 5
+            print percentLife
         elif percentLife > .15:
             self.frame = 4
+            print percentLife
         elif percentLife > .10:
             self.frame = 3
+            print percentLife
         elif percentLife > .5:
             self.frame = 2
+            print percentLife
         elif percentLife > .1:
             self.frame = 1
+            print percentLife
         else:
             self.frame = 0
+            print percentLife
           #  self.living = False
         #self.surface = self.surfaces[self.frame]
         
