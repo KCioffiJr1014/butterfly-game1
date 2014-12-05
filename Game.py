@@ -65,8 +65,8 @@ while True:
         screen.blit(singleplayer.surface, singleplayer.rect)
         screen.blit(exit.surface, exit.rect)
         pygame.display.flip()'''
-			
-		
+            
+        
 
 
 
@@ -166,6 +166,7 @@ while True:
         for victem in wasps:
             bully.collideWasp(victem)
             bully.collidePlayer(player)
+            wasp.healthbar.update()
         
 
     print "collide:", time.time()-st
