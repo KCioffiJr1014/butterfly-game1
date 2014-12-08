@@ -26,7 +26,7 @@ class WaspHealthBar():
         self.wasp = wasp
         
         self.maxFrame = len(self.surfaces)-1
-       #self.surface = pygame.transform.scale(self.faces,(100,25))
+        self.surface = pygame.transform.scale(self.faces,(100,25))
         self.frame = self.maxFrame
         self.surface = self.surfaces[self.frame]
         self.rect = self.surface.get_rect()
