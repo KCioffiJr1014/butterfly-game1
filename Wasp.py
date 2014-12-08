@@ -14,6 +14,10 @@ class Wasp():
         self.radius = (int(self.rect.height/2.0 + self.rect.width/2.0)/2) - 1
         self.living = True
         self.healthbar = WaspHealthBar(self)
+        self.life = True 
+        self.maxLife = True
+        self.health = 20
+        self.maxHealth = 25
         
     def place(self, pos):
         self.rect.center = pos

@@ -166,7 +166,9 @@ while True:
         for victem in wasps:
             bully.collideWasp(victem)
             bully.collidePlayer(player)
+            self.rect.center = [self.wasp.rect.center[0],self.wasp.rect.center[1]-20]
             wasp.healthbar.update()
+            
         
 
     print "collide:", time.time()-st
@@ -176,6 +178,7 @@ while True:
     for wasp in wasps:
         if not wasp.living:
             wasps.remove(wasp)
+        
             
     if player.health <= 0:
             player.living = False

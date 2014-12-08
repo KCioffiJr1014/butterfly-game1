@@ -23,14 +23,14 @@ class WaspHealthBar():
         self.surfaces += [pygame.image.load("rsc/Health/90%.png")]
         self.surfaces += [pygame.image.load("rsc/Health/95%.png")]
         self.surfaces += [pygame.image.load("rsc/Health/100%.png")]
-        
+        self.wasp = wasp
         
         self.maxFrame = len(self.surfaces)-1
        #self.surface = pygame.transform.scale(self.faces,(100,25))
         self.frame = self.maxFrame
         self.surface = self.surfaces[self.frame]
         self.rect = self.surface.get_rect()
-        self.zombie = wasp
+        self.wasp = wasp
         self.rect.center = [self.wasp.rect.center[0],self.wasp.rect.center[1]-20]
         #if pygame.mixer:
         #    self.healthSound = pygame.mixer.Sound("health.wav")
