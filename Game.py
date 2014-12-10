@@ -91,8 +91,8 @@ healthbar = HealthBar([width - 75, 75]) #DEFAULT: 100 MODED: 200
 butterflys = []
 butterflys += [Butterfly("rsc/Butterfly/Butterfly.png",[1,2], [100, 125])]
 
-#wasps = []
-#wasps += [Wasp("rsc/Wasp/Wasp.png",[1,2], [100, 125])]
+wasps = []
+wasps += [Wasp("rsc/Wasp/Wasp.png",[1,2], [100, 125])]
 
 while True:
     st = time.time()
