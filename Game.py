@@ -166,7 +166,7 @@ while True:
         for victem in wasps:
             bully.collideWasp(victem)
             bully.collidePlayer(player)
-            wasp.healthbar.update()
+            bully.healthbar.update()
         
 
     print "collide:", time.time()-st
