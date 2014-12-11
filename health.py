@@ -22,7 +22,7 @@ class HealthBar():
         self.surfaces += [pygame.image.load("rsc/Health/85%.png")]
         self.surfaces += [pygame.image.load("rsc/Health/90%.png")]
         self.surfaces += [pygame.image.load("rsc/Health/95%.png")]
-        self.surfaces += [pygame.image.load("rsc/Health/100%.png")]
+        self.surfaces += [pygame.image.load("rsc/Health/100%1.png")]
         self.maxFrame = len(self.surfaces)-1
 #        self.surface = pygame.transform.scale(self.faces,(100,25))
         self.frame = self.maxFrame
