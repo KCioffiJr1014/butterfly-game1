@@ -137,12 +137,12 @@ while True:
                       [random.randint(0,10), random.randint(0,10)],
                       [random.randint(100, width-100), random.randint(100, height-100)]
                       )]
-    '''if len(wasps) < 10:
+    if len(wasps) < 10:
         if random.randint(0, .5*60) == 0:
             wasps += [Wasp("rsc/Wasp/Wasp.png",
                       [random.randint(0,10), random.randint(0,10)],
                       [random.randint(100, width-100), random.randint(100, height-100)]
-                      )]'''
+                      )]
     '''if timerWait < timerWaitMax:
         timerWait += 1
     else:
@@ -154,8 +154,8 @@ while True:
     player.update(width, height)
     for butterfly in butterflys:
         butterfly.update(width, height)
-    #for wasp in wasps:
-    #   wasp.update(width, height)
+    for wasp in wasps:
+       wasp.update(width, height)
 
     print "update:", time.time()-st
     for bully in butterflys:
