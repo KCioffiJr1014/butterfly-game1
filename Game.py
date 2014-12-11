@@ -132,12 +132,16 @@ while True:
                         #exit.clicked = True
     print "controls:", time.time()-st
     if len(butterflys) < 10:
-        if random.randint(0, .25*60) == 0:
+        if random.randint(0, 1*60) == 0:
             butterflys += [Butterfly("rsc/Butterfly/Butterfly2.png",
                       [random.randint(0,10), random.randint(0,10)],
                       [random.randint(100, width-100), random.randint(100, height-100)]
                       )]
+<<<<<<< HEAD
     if len(wasps) < 10:
+=======
+	'''if len(wasps) < 10:
+>>>>>>> origin/master
         if random.randint(0, .5*60) == 0:
             wasps += [Wasp("rsc/Wasp/Wasp.png",
                       [random.randint(0,10), random.randint(0,10)],
@@ -146,10 +150,10 @@ while True:
     '''if timerWait < timerWaitMax:
         timerWait += 1
     else:
-        timerWait = 0
-        timer.increaseScore(.1)
+        timerWait = o
+        timer.increaseScore(.1)'''
     player.update(width, height)
-    timer.update()'''
+    '''timer.update()'''
     print "spawn:", time.time()-st
     player.update(width, height)
     for butterfly in butterflys:
