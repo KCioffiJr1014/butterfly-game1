@@ -54,7 +54,7 @@ class Player():
             self.gusting = False
         
     def attack(self, atk):
-		if atk == "gust" and self.guestCount == 0:
+		if atk == "gust" and self.gustCount == 0:
 			self.gusting = True
 			self.gust.go(self)
 			self.gustCount += 1
