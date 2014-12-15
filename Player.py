@@ -27,6 +27,9 @@ class Player():
         self.didBounceX = False
         self.didBounceY = False
         self.health = 20
+        self.maxHealth = 20
+        self.nodamage = 0
+        self.living = True
         
     
     def update(self, width, height):
@@ -41,6 +44,19 @@ class Player():
     def move(self):
         self.rect = self.rect.move(self.speed)
         
+        if 0 < self.gustCount < self.maxGustCount:
+            self.gustCount += 1
+            self.gust.go(self)
+        elif self.gustCount >= self.maxGustCount:
+            self.gustCount = 0
+            self.gusting = False
+        
+    def attack(self, atk):
+    if atk == "gust" and self.guestCount == 0:
+        self.gusting = True
+        self.gust.go(self)
+        self.gustCount += 1
+
     def collideWall(self, width, height):
         if not self.didBounceX:
             #print "trying to hit Wall"
