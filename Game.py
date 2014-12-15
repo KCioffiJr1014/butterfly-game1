@@ -110,7 +110,9 @@ while True:
                 player.go("down")
             elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.go("left")
-            elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
+            elif (event.key == pygame.K_j):
+                        player.attack("gust")
+            elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT): 
                 altFlag = True
             elif (event.key == pygame.K_RETURN) and altFlag:
 				if fullscreen == 0:
