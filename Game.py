@@ -13,10 +13,13 @@ clock = pygame.time.Clock()
 
 width = 800
 height = 600
+fullscreen = 0
+altFlag = False
 size = width, height
 bgColor = r,g,b = 0, 0, 0
 bg =  pygame.image.load("rsc/Background/BG2.png")
 bgRect = bg.get_rect()
+
 
 
 
@@ -101,12 +104,22 @@ while True:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w or event.key == pygame.K_UP:
                 player.go("up")
-            if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
+            elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
                 player.go("right")
-            if event.key == pygame.K_s or event.key == pygame.K_DOWN:
+            elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
                 player.go("down")
-            if event.key == pygame.K_a or event.key == pygame.K_LEFT:
+            elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.go("left")
+            elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
+                altFlag = True
+            elif (event.key == pygame.K_RETURN) and altFlag:
+				if fullscreen == 0:
+				    fullscreen = pygame.FULLSCREEN
+				else:
+				    fullscreen = 0
+				screen = pygame.display.set_mode((width,height), fullscreen)
+				pygame.display.flip()
+                    
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_w or event.key == pygame.K_UP:
                 player.go("stop up")
@@ -116,20 +129,10 @@ while True:
                 player.go("stop down")
             if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.go("stop left")
-        #elif event.type == pygame.MOUSEMOTION:
-                #if singleplayer.collidePt(event.pos):
-                    #singleplayer.highlighted = True
-                    #exit.highlighted = False
-                #elif exit.collidePt(event.pos):
-                    #singleplayer.highlighted = False
-                    #exit.highlighted = True
-        #elif event.type == pygame.MOUSEBUTTONDOWN:
-                #if event.button == 1:
-                    #if singleplayer.collidePt(event.pos):
-                        #singleplayer.clicked = True
-                        #run = True
-                    #elif exit.collidePt(event.pos):
-                        #exit.clicked = True
+            elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
+                altFlag = False
+                    
+                    
     print "controls:", time.time()-st
     if len(butterflys) < 10:
         if random.randint(0, 1*60) == 0:
@@ -139,12 +142,11 @@ while True:
                       )]
 
     if len(wasps) < 10:
-	'''if len(wasps) < 10:
         if random.randint(0, .5*60) == 0:
             wasps += [Wasp("rsc/Wasp/Wasp.png",
                       [random.randint(0,10), random.randint(0,10)],
                       [random.randint(100, width-100), random.randint(100, height-100)]
-                      )]'''
+                      )]
     #if timerWait < timerWaitMax:
      #   timerWait += 1
     #else:

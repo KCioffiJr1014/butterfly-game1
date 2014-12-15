@@ -1,5 +1,5 @@
 import pygame, math
-
+from gust import Gust
 class Player():
     def __init__(self, pos):
         self.upImages = [pygame.image.load("rsc/Player/MU.png"),
@@ -23,6 +23,8 @@ class Player():
         self.speedx = 0
         self.speedy = 0
         self.speed = [self.speedx, self.speedy]
+        self.gustCount = 0
+        self.maxGustCount = 10
         self.radius = 20
         self.didBounceX = False
         self.didBounceY = False
@@ -52,10 +54,10 @@ class Player():
             self.gusting = False
         
     def attack(self, atk):
-    if atk == "gust" and self.guestCount == 0:
-        self.gusting = True
-        self.gust.go(self)
-        self.gustCount += 1
+		if atk == "gust" and self.guestCount == 0:
+			self.gusting = True
+			self.gust.go(self)
+			self.gustCount += 1
 
     def collideWall(self, width, height):
         if not self.didBounceX:
