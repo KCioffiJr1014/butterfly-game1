@@ -84,8 +84,8 @@ while True:
 screen = pygame.display.set_mode(size)
 
 player = Player([width/2, height/2])
-
-healthbar = HealthBar([width - 75, 75]) #DEFAULT: 100 MODED: 200
+                                   #75 for both
+healthbar = HealthBar([width - 75, 125]) #DEFAULT: 100 MODED: 200
                                     #600
 
 butterflys = []
