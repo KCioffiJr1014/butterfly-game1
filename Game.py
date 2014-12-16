@@ -97,6 +97,8 @@ butterflys += [Butterfly("rsc/Butterfly/Butterfly.png",[1,2], [100, 125])]
 wasps = []
 wasps += [Wasp("rsc/Wasp/Wasp.png",[1,2], [100, 125])]
 
+projectiles = []
+
 while True:
     st = time.time()
     for event in pygame.event.get():
@@ -111,7 +113,7 @@ while True:
             elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.go("left")
             elif (event.key == pygame.K_j):
-                        player.attack("gust")
+                        projectiles += [player.attack("gust")]
             elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT): 
                 altFlag = True
             elif (event.key == pygame.K_RETURN) and altFlag:
@@ -184,9 +186,8 @@ while True:
     for wasp in wasps:
         if not wasp.living:
             wasps.remove(wasp)
-        
-    if player.gusting:
-            screen.blit(player.gust.surface, player.gust.rect)        
+    
+		       
     if player.health <= 0:
             player.living = False
             
@@ -203,6 +204,8 @@ while True:
     screen.blit(player.image, player.rect)
         #screen.blit(timer.image, timer.rect)
         #screen.blit(Score.image, Score.rect)
+    for projectile in projectiles:
+		screen.blit(projectile.image, projectile.rect)
     pygame.display.flip()
     print "draw:", time.time()-st
     clock.tick(60)
