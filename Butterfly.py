@@ -65,6 +65,10 @@ class Butterfly():
 		x2 = pt[0]
 		y2 = pt[1]
 		return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
+		
+	def ButterflyGodmode (self, player):
+		
+		
         
         
         

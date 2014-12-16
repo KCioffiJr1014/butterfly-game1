@@ -125,6 +125,12 @@ class Player():
             self.speedx = -self.maxSpeed
         elif direction == "stop left":
             self.speedx = 0
+            
+    def Score (self, screen):
+		Score = score = 0
+		if not butterfly.living:
+			score = score + 100
+			print score
         
         
         
