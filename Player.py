@@ -23,8 +23,12 @@ class Player():
         self.speedx = 0
         self.speedy = 0
         self.speed = [self.speedx, self.speedy]
+        self.gust = None
+        self.gusting = False
         self.gustCount = 0
         self.maxGustCount = 10
+        self.gustCoolDown = 0
+        self.gustCoolDownMax = 100
         self.radius = 20
         self.didBounceX = False
         self.didBounceY = False
@@ -54,10 +58,10 @@ class Player():
             self.gusting = False
         
     def attack(self, atk):
-		if atk == "gust" and self.gustCount == 0:
+        if atk == "gust" and self.gustCount == 0 and self.gustCoolDown == 0:
 			self.gusting = True
 			self.gust.go(self)
-			self.gustCount += 1
+			self.belchCount += 1
 
     def collideWall(self, width, height):
         if not self.didBounceX:
@@ -121,6 +125,12 @@ class Player():
             self.speedx = -self.maxSpeed
         elif direction == "stop left":
             self.speedx = 0
+            
+    def Score (self, screen):
+		Score = score = 0
+		if not butterfly.living:
+			score = score + 100
+			print score
         
         
         

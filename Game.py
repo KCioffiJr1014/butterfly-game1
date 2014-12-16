@@ -131,6 +131,8 @@ while True:
                 player.go("stop down")
             if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.go("stop left")
+            elif (event.key == pygame.K_j):
+                        player.attack("stop gust")
             elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                 altFlag = False
                     
@@ -183,11 +185,12 @@ while True:
         if not wasp.living:
             wasps.remove(wasp)
         
-            
+    if player.gusting:
+            screen.blit(player.gust.surface, player.gust.rect)        
     if player.health <= 0:
             player.living = False
             
-    
+            
     print "die:", time.time()-st
     bgColor = r,g,b
     screen.fill(bgColor)
