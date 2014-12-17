@@ -5,7 +5,7 @@ from Wasp import Wasp
 from Screen import Screen
 from Menu import Button
 from health import HealthBar
-#from QueenWasp import QueenWasp
+# from QueenWasp import QueenWasp
 
 pygame.init()
 
@@ -16,12 +16,9 @@ height = 600
 fullscreen = 0
 altFlag = False
 size = width, height
-bgColor = r,g,b = 0, 0, 0
-bg =  pygame.image.load("rsc/Background/BG2.png")
+bgColor = r, g, b = 0, 0, 0
+bg = pygame.image.load("rsc/Background/BG2.png")
 bgRect = bg.get_rect()
-
-
-
 
 '''
 background = Screen(["rsc/Player/MD.png"], [0,0], size, 10)
@@ -68,8 +65,8 @@ while True:
         screen.blit(singleplayer.surface, singleplayer.rect)
         screen.blit(exit.surface, exit.rect)
         pygame.display.flip()'''
-            
-        
+
+
 
 
 
@@ -86,16 +83,16 @@ while True:
 
 screen = pygame.display.set_mode(size)
 
-player = Player([width/2, height/2])
-                                   #75 for both
-healthbar = HealthBar([width - 75, 125]) #DEFAULT: 100 MODED: 200
-                                    #600
+player = Player([width / 2, height / 2])
+#75 for both
+healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
+#600
 
 butterflys = []
-butterflys += [Butterfly("rsc/Butterfly/Butterfly.png",[1,2], [100, 125])]
+butterflys += [Butterfly("rsc/Butterfly/Butterfly.png", [1, 2], [100, 125])]
 
 wasps = []
-wasps += [Wasp("rsc/Wasp/Wasp.png",[1,2], [100, 125])]
+wasps += [Wasp("rsc/Wasp/Wasp.png", [1, 2], [100, 125])]
 
 projectiles = []
 
@@ -113,17 +110,17 @@ while True:
             elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.go("left")
             elif (event.key == pygame.K_j):
-                        projectiles += [player.attack("gust")]
-            elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT): 
+                projectiles += [player.attack("gust")]
+            elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                 altFlag = True
             elif (event.key == pygame.K_RETURN) and altFlag:
-				if fullscreen == 0:
-				    fullscreen = pygame.FULLSCREEN
-				else:
-				    fullscreen = 0
-				screen = pygame.display.set_mode((width,height), fullscreen)
-				pygame.display.flip()
-                    
+                if fullscreen == 0:
+                    fullscreen = pygame.FULLSCREEN
+                else:
+                    fullscreen = 0
+                screen = pygame.display.set_mode((width, height), fullscreen)
+                pygame.display.flip()
+
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_w or event.key == pygame.K_UP:
                 player.go("stop up")
@@ -134,43 +131,42 @@ while True:
             if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.go("stop left")
             elif (event.key == pygame.K_j):
-                        player.attack("stop gust")
+                player.attack("stop gust")
             elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                 altFlag = False
-                    
-                    
-    print "controls:", time.time()-st
+
+    print "controls:", time.time() - st
     if len(butterflys) < 10:
-        if random.randint(0, 1*60) == 0:
+        if random.randint(0, 1 * 60) == 0:
             butterflys += [Butterfly("rsc/Butterfly/Butterfly2.png",
-                      [random.randint(0,10), random.randint(0,10)],
-                      [random.randint(100, width-100), random.randint(100, height-100)]
-                      )]
+                                     [random.randint(0, 10), random.randint(0, 10)],
+                                     [random.randint(100, width - 100), random.randint(100, height - 100)]
+            )]
 
     if len(wasps) < 10:
-        if random.randint(0, 10*60) == 0:
+        if random.randint(0, 10 * 60) == 0:
             wasps += [Wasp("rsc/Wasp/Wasp.png",
-				  [random.randint(0,10), random.randint(0,10)],
-				  [random.randint(100, width-100), random.randint(100, height-100)]
-				  )]
-    #if timerWait < timerWaitMax:
-     #   timerWait += 1
-    #else:
-     #   timerWait = o
-      #  timer.increaseScore(.1)
+                           [random.randint(0, 10), random.randint(0, 10)],
+                           [random.randint(100, width - 100), random.randint(100, height - 100)]
+            )]
+            #if timerWait < timerWaitMax:
+            #   timerWait += 1
+            #else:
+            #   timerWait = o
+            #  timer.increaseScore(.1)
     player.update(width, height)
-#timer.update()
-    print "spawn:", time.time()-st
+    #timer.update()
+    print "spawn:", time.time() - st
     player.update(width, height)
     for butterfly in butterflys:
         butterfly.update(width, height)
     for wasp in wasps:
-		wasp.update(width, height)
-    #for gust in gust:
-	
-	#	gust.update(width, height)
+        wasp.update(width, height)
+        #for gust in gust:
 
-    print "update:", time.time()-st
+    #	gust.update(width, height)
+
+    print "update:", time.time() - st
     for bully in butterflys:
         for victem in butterflys:
             bully.collideButterfly(victem)
@@ -180,37 +176,34 @@ while True:
             bully.collideWasp(victem)
             bully.collidePlayer(player)
             bully.healthbar.update()
-        
 
-    print "collide:", time.time()-st
+    print "collide:", time.time() - st
     for butterfly in butterflys:
         if not butterfly.living:
             butterflys.remove(butterfly)
     for wasp in wasps:
         if not wasp.living:
             wasps.remove(wasp)
-    
-		       
+
     if player.health <= 0:
-            player.living = False
-            
-            
-    print "die:", time.time()-st
-    bgColor = r,g,b
+        player.living = False
+
+    print "die:", time.time() - st
+    bgColor = r, g, b
     screen.fill(bgColor)
-    screen.blit(bg,bgRect)
+    screen.blit(bg, bgRect)
     screen.blit(healthbar.surface, healthbar.rect)
     for butterfly in butterflys:
         screen.blit(butterfly.image, butterfly.rect)
     for wasp in wasps:
         screen.blit(wasp.image, wasp.rect)
     screen.blit(player.image, player.rect)
-        #screen.blit(timer.image, timer.rect)
-        #screen.blit(Score.image, Score.rect)
+    #screen.blit(timer.image, timer.rect)
+    #screen.blit(Score.image, Score.rect)
     for projectile in projectiles:
-		screen.blit(projectile.image, projectile.rect)
+        screen.blit(projectile.image, projectile.rect)
     pygame.display.flip()
-    print "draw:", time.time()-st
+    print "draw:", time.time() - st
     clock.tick(60)
 
 
