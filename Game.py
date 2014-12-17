@@ -148,7 +148,7 @@ while True:
                       )]
 
     if len(wasps) < 10:
-        if random.randint(0, .5*60) == 0:
+        if random.randint(0, 10*60) == 0:
             wasps += [Wasp("rsc/Wasp/Wasp.png",
 				  [random.randint(0,10), random.randint(0,10)],
 				  [random.randint(100, width-100), random.randint(100, height-100)]
