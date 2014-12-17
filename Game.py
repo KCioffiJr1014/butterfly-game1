@@ -165,7 +165,10 @@ while True:
     for butterfly in butterflys:
         butterfly.update(width, height)
     for wasp in wasps:
-       wasp.update(width, height)
+		wasp.update(width, height)
+    #for gust in gust:
+	
+	#	gust.update(width, height)
 
     print "update:", time.time()-st
     for bully in butterflys:
