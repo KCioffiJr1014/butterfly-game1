@@ -37,6 +37,7 @@ class Gust():
         self.rect.center = pt
         
     def update(self, width, height):
+        self.speed = [self.speedx, self.speedy]
         self.move()
         self.collideWall(width, height)
         
