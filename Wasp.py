@@ -18,6 +18,7 @@ class Wasp():
         self.maxLife = True
         self.health = 20
         self.maxHealth = 25
+        self.detectionRadius = 80
         
     def place(self, pos):
         self.rect.center = pos
@@ -29,22 +30,24 @@ class Wasp():
         self.move()
         self.collideWall(width, height)
         
-    def move(self):
-        self.rect = self.rect.move(self.speed)
+    def move(self, player):
+        if player != None:
+            self.chase(player)
+        self.rect = self.rect.move(self.speed
 
     def chase(self,player):
-            if self.distToPoint(player.rect.center) < self.detectionRadius:
-                pX = player.rect.center[0]
-                pY = player.rect.center[1]
-                zX = self.rect.center[0]
-                zY = self.rect.center[1]
+        if self.distToPoint(player.rect.center) < self.detectionRadius:
+            pX = player.rect.center[0]
+            pY = player.rect.center[1]
+            zX = self.rect.center[0]
+            zY = self.rect.center[1]
            
             if pX > zX:
-               self.speed[0] = self.maxSpeed
+                self.speed[0] = self.maxSpeed
             elif pX < zX:
-               self.speed[0] = -self.maxSpeed
+                self.speed[0] = -self.maxSpeed
             else:
-               self.speed[0] = 0
+                self.speed[0] = 0
        
             if pY > zY:
                 self.speed[1] = self.maxSpeed
@@ -87,6 +90,16 @@ class Wasp():
                     if (self.radius + other.radius) > self.distance(other.rect.center):
                         self.living = False
     
+    def collide_attack(self, attack):
+        if (self.rect.right > attack.rect.left and self.rect.left < attack.rect.right):
+            if (self.rect.bottom > attack.rect.top and self.rect.top < attack.rect.bottom):
+                if (self.distToPoint(attack.rect.center) < self.radius + attack.radius):
+                    self.life -= attack.damage
+                    self.healthbar.update()
+                    print "Hit", self.life
+                    if self.life <= 0:
+                        self.living = False
+                            
     def distance(self, pt):
         x1 = self.rect.center[0]
         y1 = self.rect.center[1]
