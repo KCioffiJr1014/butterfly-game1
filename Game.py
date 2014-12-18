@@ -130,7 +130,7 @@ while True:
                 player.go("stop down")
             if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.go("stop left")
-            elif (event.key == pygame.K_j):
+            elif (event.key == pygame.K_j ):
                 player.attack("stop gust")
             elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                 altFlag = False
@@ -184,6 +184,9 @@ while True:
     for wasp in wasps:
         if not wasp.living:
             wasps.remove(wasp)
+    for player in Player:
+		if not player.living:
+			player.remove(player)
 
     if player.health <= 0:
         player.living = False
