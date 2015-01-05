@@ -1,6 +1,6 @@
 import pygame, sys, random, time
 from Butterfly import Butterfly
-from Player import Player
+from Player import player
 from Wasp import Wasp
 from Screen import Screen
 from Menu import Button
@@ -83,7 +83,7 @@ while True:
 
 screen = pygame.display.set_mode(size)
 
-player = Player([width / 2, height / 2])
+Player = player([width / 2, height / 2])
 #75 for both
 healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
 #600
