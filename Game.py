@@ -13,7 +13,7 @@ clock = pygame.time.Clock()
 
 width = 800
 height = 600
-fullscreen = 0
+fullscreen = False
 altFlag = False
 size = width, height
 bgColor = r, g, b = 0, 0, 0
@@ -114,10 +114,12 @@ while True:
             elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                 altFlag = True
             elif (event.key == pygame.K_RETURN) and altFlag:
-                if fullscreen == 0:
-                    fullscreen = pygame.FULLSCREEN
+                if fullscreen:
+                    pygame.display.set_mode(size)
+                    fullscreen = False
                 else:
-                    fullscreen = 0
+                    pygame.display.set_mode(size, pygame.FULLSCREEN)
+                    fullscreen = True
                 screen = pygame.display.set_mode((width, height), fullscreen)
                 pygame.display.flip()
 
