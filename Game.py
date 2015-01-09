@@ -161,7 +161,7 @@ while True:
     for butterfly in butterflys:
         butterfly.update(width, height)
     for wasp in wasps:
-        wasp.update(width, height)
+        wasp.update(width, height, player)
         #for gust in gust:
 
     #	gust.update(width, height)

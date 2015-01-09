@@ -8,6 +8,7 @@ class Wasp():
         self.speedx = speed[0]
         self.speedy = speed[0]
         self.speed = [self.speedx, self.speedy]
+        self.maxSpeed = 20
         self.place(pos)
         self.didBounceX = False
         self.didBounceY = False
@@ -23,18 +24,18 @@ class Wasp():
     def place(self, pos):
         self.rect.center = pos
         
-    '''def distToPoint(self, pt):
+    def distToPoint(self, pt):
         x1 = self.rect.center[0]
         x2 = pt[0]
         y1 = self.rect.center[1]
         y2 = pt[1]
         return math.sqrt(((x2-x1)**2)+((y2-y1)**2))
-       ''' 
-    def update(self, width, height):
+        
+    def update(self, width, height, player):
         self.didBounceX = False
         self.didBounceY = False
         self.speed = [self.speedx, self.speedy]
-        self.move(self.speed)
+        self.move(player)
         self.collideWall(width, height)
         
     def move(self, player):
@@ -64,13 +65,13 @@ class Wasp():
                 self.speed[1] = 0
         
     def collideWall(self, width, height):
-       if not self.didBounceX:
-           if self.rect.left < 0 or self.rect.right > width:
+        if not self.didBounceX:
+            if self.rect.left < 0 or self.rect.right > width:
                self.speedx = -self.speedx
                self.didBounceX = True
                #print "hit xWall"
-       if not self.didBounceY:
-           if self.rect.top < 0 or self.rect.bottom > height:
+        if not self.didBounceY:
+            if self.rect.top < 0 or self.rect.bottom > height:
                self.speedy = -self.speedy
                self.didBounceY = True
                #print "hit xWall"
