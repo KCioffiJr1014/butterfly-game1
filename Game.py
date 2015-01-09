@@ -13,7 +13,7 @@ clock = pygame.time.Clock()
 
 width = 800
 height = 600
-fullscreen = 0
+fullscreen = False
 altFlag = False
 size = width, height
 bgColor = r, g, b = 0, 0, 0
@@ -206,7 +206,6 @@ while True:
     for projectile in projectiles:
         screen.blit(projectile.image, projectile.rect)
     pygame.display.flip()
-    print "draw:", time.time() - st
     clock.tick(60)
 
 
