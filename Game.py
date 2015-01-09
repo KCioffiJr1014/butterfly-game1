@@ -1,6 +1,6 @@
 import pygame, sys, random, time
 from Butterfly import Butterfly
-from Player import Player
+from Player import player
 from Wasp import Wasp
 from Screen import Screen
 from Menu import Button
@@ -13,7 +13,7 @@ clock = pygame.time.Clock()
 
 width = 800
 height = 600
-fullscreen = 0
+fullscreen = False
 altFlag = False
 size = width, height
 bgColor = r, g, b = 0, 0, 0
@@ -83,7 +83,7 @@ while True:
 
 screen = pygame.display.set_mode(size)
 
-player = Player([width / 2, height / 2])
+Player = player([width / 2, height / 2])
 #75 for both
 healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
 #600
@@ -114,10 +114,12 @@ while True:
             elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                 altFlag = True
             elif (event.key == pygame.K_RETURN) and altFlag:
-                if fullscreen == 0:
-                    fullscreen = pygame.FULLSCREEN
+                if fullscreen:
+                    pygame.display.set_mode(size)
+                    fullscreen = False
                 else:
-                    fullscreen = 0
+                    pygame.display.set_mode(size, pygame.FULLSCREEN)
+                    fullscreen = True
                 screen = pygame.display.set_mode((width, height), fullscreen)
                 pygame.display.flip()
 
@@ -130,7 +132,7 @@ while True:
                 player.go("stop down")
             if event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.go("stop left")
-            elif (event.key == pygame.K_j):
+            elif (event.key == pygame.K_j ):
                 player.attack("stop gust")
             elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                 altFlag = False
@@ -184,6 +186,9 @@ while True:
     for wasp in wasps:
         if not wasp.living:
             wasps.remove(wasp)
+    for player in Player:
+		if not player.living:
+			player.remove(player)
 
     if player.health <= 0:
         player.living = False

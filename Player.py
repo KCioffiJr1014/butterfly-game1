@@ -1,7 +1,7 @@
 import pygame, math
 from Gust import Gust
 
-class Player():
+class player():
     def __init__(self, pos):
         self.upImages = [pygame.image.load("rsc/Player/MU.png"),
                          pygame.image.load("rsc/Player/MU2.png")]
@@ -20,7 +20,7 @@ class Player():
         self.maxWait = 60*.25
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect()
-        self.maxSpeed = 10
+        self.maxSpeed = 5
         self.speedx = 0
         self.speedy = 0
         self.speed = [self.speedx, self.speedy]
@@ -124,6 +124,13 @@ class Player():
             self.speedx = -self.maxSpeed
         elif direction == "stop left":
             self.speedx = 0
+            
+    def collideQueenWasp(self, other):
+		if self != other:
+			if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+				if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+					if (self.radius + other.radius) > self.distance(other.rect.center):
+						self.living = False
         
         
         
