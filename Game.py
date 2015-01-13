@@ -68,9 +68,6 @@ while True:
 
 
 
-
-
-
 #timer = Score([80, height - 25], "Time: ", 36)
 #timerWait = 0
 #timerWaitMax = 6
@@ -109,7 +106,7 @@ while True:
                 player.go("down")
             elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.go("left")
-            elif (event.key == pygame.K_j):
+            elif (event.key == pygame.K_e):
                 projectiles += [player.attack("gust")]
             elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                 altFlag = True
@@ -144,7 +141,7 @@ while True:
             )]
 
     if len(wasps) < 10:
-        if random.randint(0, 10 * 60) == 0:
+        if random.randint(0, 5 * 60) == 0:
             wasps += [Wasp("rsc/Wasp/Wasp.png",
                            [random.randint(0, 10), random.randint(0, 10)],
                            [random.randint(100, width - 100), random.randint(100, height - 100)]
