@@ -196,8 +196,8 @@ while True:
         screen.blit(butterfly.image, butterfly.rect)
     for wasp in wasps:
         screen.blit(wasp.image, wasp.rect)
-    #for wasphealth in wasphealth:
-        #screen.blit(wasphealth.image, wasphealth.rect)
+    for wasphealthbar in wasphealthbar:
+        screen.blit(wasphealthbar.image, wasphealthbar.rect)
     screen.blit(player.image, player.rect)
     #screen.blit(timer.image, timer.rect)
     #screen.blit(Score.image, Score.rect)
