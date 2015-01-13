@@ -1,6 +1,6 @@
 import pygame, sys, random, time
 from Butterfly import Butterfly
-from Player import player
+from Player import Player
 from Wasp import Wasp
 from Screen import Screen
 from Menu import Button
@@ -83,7 +83,7 @@ while True:
 
 screen = pygame.display.set_mode(size)
 
-Player = player([width / 2, height / 2])
+player = Player([width / 2, height / 2])
 #75 for both
 healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
 #600
@@ -162,8 +162,8 @@ while True:
         butterfly.update(width, height)
     for wasp in wasps:
         wasp.update(width, height, player)
-    for gust in gust:
-        gust.update(width, height)
+    for projectile in projectiles:
+        projectile.update(width, height)
 
     print "update:", time.time() - st
     for bully in butterflys:
@@ -183,9 +183,6 @@ while True:
     for wasp in wasps:
         if not wasp.living:
             wasps.remove(wasp)
-    for player in Player:
-		if not player.living:
-			player.remove(player)
 
     if player.health <= 0:
         player.living = False
@@ -199,6 +196,8 @@ while True:
         screen.blit(butterfly.image, butterfly.rect)
     for wasp in wasps:
         screen.blit(wasp.image, wasp.rect)
+    for wasphealth in wasphealth:
+        screen.blit(wasphealth.image, wasphealth.rect)
     screen.blit(player.image, player.rect)
     #screen.blit(timer.image, timer.rect)
     #screen.blit(Score.image, Score.rect)

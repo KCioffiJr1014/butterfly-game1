@@ -1,7 +1,7 @@
 import pygame, math
 from Gust import Gust
 
-class player():
+class Player():
     def __init__(self, pos):
         self.upImages = [pygame.image.load("rsc/Player/MU.png"),
                          pygame.image.load("rsc/Player/MU2.png")]
