@@ -118,5 +118,7 @@ class Wasp():
 		hurt = 0
 		if collidePlayer == True:
 			hurt += 1
+            
+            
 		
         

@@ -3,6 +3,11 @@ import math,sys,pygame
 class Gust():
     def __init__(self,player):
         self.facing = player.facing
+        self.upImages = [pygame.image.load("rsc/Projectiles/gust.png")]
+        self.downImages = [pygame.image.load("rsc/Projectiles/gustb.png")]
+        self.leftImages = [pygame.image.load("rsc\Projectiles/gustl.png")]
+        self.rightImages = [pygame.image.load("rsc\Projectiles/gustr.png")]
+
         if self.facing == "up":
             self.speed = [0, -5]
         elif self.facing == "down":
