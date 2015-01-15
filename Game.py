@@ -5,6 +5,7 @@ from Wasp import Wasp
 from Screen import Screen
 from Menu import Button
 from health import HealthBar
+
 # from QueenWasp import QueenWasp
 
 pygame.init()
@@ -106,7 +107,7 @@ while True:
                 player.go("down")
             elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.go("left")
-            elif (event.key == pygame.K_e):
+            elif (event.key == pygame.K_e or event.key == pygame.K_j):
                 projectiles += [player.attack("gust")]
             elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                 altFlag = True
@@ -191,6 +192,7 @@ while True:
     screen.blit(healthbar.surface, healthbar.rect)
     for butterfly in butterflys:
         screen.blit(butterfly.image, butterfly.rect)
+        player.collideWasp(healthbar)
     for wasp in wasps:
         screen.blit(wasp.image, wasp.rect)
     #for wasphealthbar in wasphealthbar:
