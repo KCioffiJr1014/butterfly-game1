@@ -1,5 +1,6 @@
 import pygame, math
 from Gust import Gust
+from health import *
 
 class Player():
     def __init__(self, pos):
@@ -47,6 +48,15 @@ class Player():
         self.animate()
         self.facingChanged = False
    
+   
+    def modifyHealth (self, amount):
+        self.health += amount
+        if self.health <= 0:
+            self.health = 0
+            self.living = False
+        elif self.health >= self.maxHealth:
+            self.health = self.maxHealth
+        
     def move(self):
         self.rect = self.rect.move(self.speed)
         
@@ -127,11 +137,18 @@ class Player():
             
     
     def collideWasp(self, other):
-		if self != other:
-			if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
-				if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
-					if (self.radius + other.radius) > self.distance(other.rect.center):
-						self.living = False
+        if (self.rect.right > other.rect.left 
+            and self.rect.left < other.rect.right):
+                if (self.rect.bottom > other.rect.top and 
+                    self.rect.top < other.rect.bottom):
+                    self.hurt = True
+                    if self.nodamage == 0:
+                        self.modifyHealth(-other.damage)
+                        effect.update(self.health, self.maxHealth) 
+                        print self.health
+                    self.nodamage += 1
+                    if self.nodamage == 25:
+                        self.nodamage = 0
     
     
     
