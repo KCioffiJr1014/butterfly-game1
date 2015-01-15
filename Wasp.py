@@ -97,14 +97,14 @@ class Wasp():
                     if (self.radius + other.radius) > self.distance(other.rect.center):
                         self.living = False
 
-    def collide_attack(self, attack):
+    def collideGust(self, attack):
         if (self.rect.right > attack.rect.left and self.rect.left < attack.rect.right):
             if (self.rect.bottom > attack.rect.top and self.rect.top < attack.rect.bottom):
                 if (self.distToPoint(attack.rect.center) < self.radius + attack.radius):
-                    self.life -= attack.damage
-                    self.healthbar.update()
-                    print "Hit", self.life
-                    if self.life <= 0:
+                    #self.life -= attack.damage
+                    #self.healthbar.update()
+                    #print "Hit", self.life
+                    #if self.life <= 0:
                         self.living = False
                                             
     def distance(self, pt):

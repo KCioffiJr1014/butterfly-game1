@@ -31,7 +31,7 @@ while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             elif event.type == pygame.KEYDOWN:
-                if (event.key == pygame.K_UP or event.key == pygame.K_w) and not singleplayer.highlighted:
+                if (event.ey == pygame.K_UP or event.key == pygame.K_w) and not singleplayer.highlighted:
                     singleplayer.highlighted = True
                     exit.highlighted = False
                 elif event.key == pygame.K_DOWN or event.key == pygame.K_s and not exit.highlighted:
@@ -44,7 +44,7 @@ while True:
             elif event.type == pygame.MOUSEMOTION:
                 if singleplayer.collidePt(event.pos):
                     singleplayer.highlighted = True
-                    exit.highlighted = False
+                    exit.highlighted = true
                 elif exit.collidePt(event.pos):
                     singleplayer.highlighted = False
                     exit.highlighted = True
