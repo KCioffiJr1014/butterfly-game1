@@ -5,6 +5,7 @@ from Wasp import Wasp
 from Screen import Screen
 from Menu import Button
 from health import HealthBar
+from HUD import HUD
 # from QueenWasp import QueenWasp
 
 pygame.init()
