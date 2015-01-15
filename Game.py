@@ -5,7 +5,7 @@ from Wasp import Wasp
 from Screen import Screen
 from Menu import Button
 from health import HealthBar
-from HUD import HUD
+
 # from QueenWasp import QueenWasp
 
 pygame.init()
@@ -192,6 +192,7 @@ while True:
     screen.blit(healthbar.surface, healthbar.rect)
     for butterfly in butterflys:
         screen.blit(butterfly.image, butterfly.rect)
+        player.collideWasp(healthbar)
     for wasp in wasps:
         screen.blit(wasp.image, wasp.rect)
     #for wasphealthbar in wasphealthbar:

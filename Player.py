@@ -1,5 +1,6 @@
 import pygame, math
 from Gust import Gust
+from health import *
 
 class Player():
     def __init__(self, pos):
@@ -48,13 +49,13 @@ class Player():
         self.facingChanged = False
    
    
-   def modifyHealth (self, amount):    
-    self.health += amount
-    if self.health <= 0:
-        self.health = 0
-        self.living = False
-    elif self.health >= self.maxHealth:
-        self.health = self.maxHealth
+    def modifyHealth (self, amount):
+        self.health += amount
+        if self.health <= 0:
+            self.health = 0
+            self.living = False
+        elif self.health >= self.maxHealth:
+            self.health = self.maxHealth
         
     def move(self):
         self.rect = self.rect.move(self.speed)
