@@ -95,7 +95,6 @@ class Wasp():
                             self.speed[1] = self.speed[1] * -1
                             self.move(None)
                             self.move(None)
-                            self.didHit = True
                         if not wasp.didHit:
                             wasp.speed[0] = wasp.speed[0] * -1
                             wasp.speed[1] = wasp.speed[1] * -1
