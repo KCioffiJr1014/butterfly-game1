@@ -3,9 +3,7 @@ import pygame, sys, math
 class Button:
     
     def __init__(self, text, location, color, highlighted = False):
-        self.surfaces = []
-        self.font = pygame.font.Font(None, 60)
-        self.text = text
+        self.surfaces = pygame.image.load ("rsc/Startscreen/startscreen")
         self.surface = self.font.render(str(self.text), 1, color)
         self.frame = 0
         self.rect = self.surface.get_rect()
