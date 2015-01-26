@@ -17,7 +17,9 @@ class Wasp():
         self.healthbar = WaspHealthBar(self)
         self.life = True 
         self.maxLife = True
+        self.damage = 1
         self.health = 20
+        self.didHit = False
         self.maxHealth = 25
         self.detectionRadius = 80
         
@@ -93,8 +95,7 @@ class Wasp():
                             self.speed[1] = self.speed[1] * -1
                             self.move(None)
                             self.move(None)
-                            self.didHit = True
-                        if not wasp.didHit:
+                        if not self.didHit:
                             wasp.speed[0] = wasp.speed[0] * -1
                             wasp.speed[1] = wasp.speed[1] * -1
                             wasp.didHit = True
@@ -126,11 +127,11 @@ class Wasp():
         y2 = pt[1]
         return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
         
-    def Hurt():
+    '''def Hurt():
 		hurt = 0
 		if collidePlayer == True:
 			hurt += 1
-            
+    '''     
             
 		
         

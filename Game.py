@@ -173,7 +173,8 @@ while True:
         for victem in wasps:
             bully.collideWasp(victem)
             bully.collidePlayer(player)
-            bully.healthbar.update()
+            if player.gusting:
+                wasp.collide_attack(player.gust)
 
     print "collide:", time.time() - st
     for butterfly in butterflys:
