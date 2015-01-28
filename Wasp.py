@@ -95,10 +95,7 @@ class Wasp():
                             self.speed[1] = self.speed[1] * -1
                             self.move(None)
                             self.move(None)
-                        if not self.didHit:
-                            wasp.speed[0] = wasp.speed[0] * -1
-                            wasp.speed[1] = wasp.speed[1] * -1
-                            wasp.didHit = True
+                            self.didHit = True
                         return True
             return False
                             
@@ -108,16 +105,18 @@ class Wasp():
             if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
                 if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
                     if (self.radius + other.radius) > self.distance(other.rect.center):
-                        self.living = False
+                        pass
+                        #self.living = False
 
     def collide_attack(self, attack):
         if (self.rect.right > attack.rect.left and self.rect.left < attack.rect.right):
             if (self.rect.bottom > attack.rect.top and self.rect.top < attack.rect.bottom):
                 if (self.distToPoint(attack.rect.center) < self.radius + attack.radius):
-                    self.life -= attack.damage
+                    print "Hit", self.health
+                    self.health -= attack.damage
                     self.healthbar.update()
-                    print "Hit", self.life
-                    if self.life <= 0:
+                    print "Hit Done", self.health
+                    if self.health <= 0:
                         self.living = False
                                             
     def distance(self, pt):

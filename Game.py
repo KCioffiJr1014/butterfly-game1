@@ -133,7 +133,7 @@ while True:
             elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                 altFlag = False
 
-    print "controls:", time.time() - st
+    #print "controls:", time.time() - st
     if len(butterflys) < 10:
         if random.randint(0, 1 * 60) == 0:
             butterflys += [Butterfly("rsc/Butterfly/Butterfly2.png",
@@ -154,7 +154,7 @@ while True:
             #  timer.increaseScore(.1)
     player.update(width, height)
     #timer.update()
-    print "spawn:", time.time() - st
+    #print "spawn:", time.time() - st
     player.update(width, height)
     for butterfly in butterflys:
         butterfly.update(width, height)
@@ -163,7 +163,7 @@ while True:
     for projectile in projectiles:
         projectile.update(width, height)
 
-    print "update:", time.time() - st
+    #print "update:", time.time() - st
     for bully in butterflys:
         for victem in butterflys:
             bully.collideButterfly(victem)
@@ -171,11 +171,12 @@ while True:
     for bully in wasps:
         for victem in wasps:
             bully.collideWasp(victem)
-            bully.collidePlayer(player)
-            if player.gusting:
-                wasp.collide_attack(player.gust)
+        bully.collidePlayer(player)
+        for projectile in projectiles:
+            bully.collide_attack(projectile)
+            #projectile.collide_wasp(bully)
 
-    print "collide:", time.time() - st
+    #print "collide:", time.time() - st
     for butterfly in butterflys:
         if not butterfly.living:
             butterflys.remove(butterfly)
@@ -186,7 +187,7 @@ while True:
     if player.health <= 0:
         player.living = False
 
-    print "die:", time.time() - st
+    #print "die:", time.time() - st
     bgColor = r, g, b
     screen.fill(bgColor)
     screen.blit(bg, bgRect)
@@ -204,7 +205,7 @@ while True:
     for projectile in projectiles:
         screen.blit(projectile.image, projectile.rect)
     pygame.display.flip()
-    print "draw:", time.time() - st
+    #print "draw:", time.time() - st
     clock.tick(60)
 
 
