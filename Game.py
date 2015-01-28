@@ -20,6 +20,36 @@ size = width, height
 bgColor = r, g, b = 0, 0, 0
 bg = pygame.image.load("rsc/Background/BG2.png")
 bgRect = bg.get_rect()
+bgImage = pygame.image.load("rsc/Startscreen/startscreen.png")
+bgRect = bgImage.get_rect()
+
+startButton = start([width/4, height-300], 
+					"rsc/Startscreen/start.png",
+					"rsc/Startscreen/starthighlighted.png")
+                                     
+startButton2 = options([width/2, height-300],
+					"rsc/Startscreen/options.png",
+					"rsc/Startscreen/optionshighlighted.png")
+									
+StartButton3 = leave([{width/4}*3, height-300],
+					"rsc/Startscreen/quit.png",
+					"rsc/Startscreen/quit.png")
+                                     
+startCharacter = pygame.image.load("rsc/Startscreen/startscreen.png",
+                                "rsc/Startscreen/startscreen.png")
+
+while True:
+	while not running:
+		for event in pygame.event.get():
+			if event.type == pygame.quit: sys.exit()
+			if event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_RETURN:
+					running = True
+			if event.type == pygame.MOUSEBUTTONDOWN:
+				startButton.click(event.pos)
+			if event.type == pygame.MOUSEBUTTONUP:
+				if startButton.release(event.pos):
+					running = True
 
 '''
 background = Screen(["rsc/Player/MD.png"], [0,0], size, 10)
