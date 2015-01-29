@@ -23,15 +23,15 @@ bgRect = bg.get_rect()
 bgImage = pygame.image.load("rsc/Startscreen/startscreen.png")
 bgRect = bgImage.get_rect()
 
-startButton = size([width/4, height-300], 
+startButton = Button([width/4, height-300], 
 					"rsc/Startscreen/start.png",
 					"rsc/Startscreen/starthighlighted.png")
                                      
-startButton2 = size([width/2, height-300],
+startButton2 = Button([width/2, height-300],
 					"rsc/Startscreen/options.png",
 					"rsc/Startscreen/optionshighlighted.png")
 									
-StartButton3 = size([{width/4}*3, height-300],
+StartButton3 = Button([{width/4}*3, height-300],
 					"rsc/Startscreen/quit.png",
 					"rsc/Startscreen/quit.png")
                                      
