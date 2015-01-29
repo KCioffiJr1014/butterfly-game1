@@ -32,7 +32,14 @@ class Gust():
             #print "hit xWall"
         if self.rect.top < 0 or self.rect.bottom > height:
             self.speedy = 0
-        
+    
+    def WaspHit(self, other):
+		if self != other:
+			if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+				if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+					if (self.radius + other.radius) > self.distance(other.rect.center):
+						self.living = False
+                        
     def place(self, pt):
         self.rect.center = pt
         
