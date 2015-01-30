@@ -1,6 +1,6 @@
 import pygame
 
-<<<<<<< HEAD
+
 class Button():
         def __init__(self, pos, image, clickedImage = "" ):
                 if clickedImage != "":
@@ -22,7 +22,7 @@ class Button():
                         if self.rect.bottom > pt[1] and self.rect.top < pt[1]:          
                                 return True
                 return False
-=======
+
 class Button:
     
     def __init__(self, text, location, color, highlighted = False):
@@ -35,7 +35,7 @@ class Button:
         self.clicked = False
         self.highlighted = highlighted
         self.place(location)
->>>>>>> origin/master
+
         
         def click(self, pt):
                 if self.collidePoint(pt):

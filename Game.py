@@ -37,19 +37,19 @@ StartButton3 = leave([{width/4}*3, height-300],
                                      
 startCharacter = pygame.image.load("rsc/Startscreen/startscreen.png",
                                 "rsc/Startscreen/startscreen.png")
-
+'''
 while True:
-		while not running:
-               for event in pygame.event.get():
-                        if event.type == pygame.quit: sys.exit()
-                        if event.type == pygame.KEYDOWN:
-                                if event.key == pygame.K_RETURN:
-                                        running = True
-                        if event.type == pygame.MOUSEBUTTONDOWN:
-                                startButton.click(event.pos)
-                        if event.type == pygame.MOUSEBUTTONUP:
-                                if startButton.release(event.pos):
-                                        running = True
+	while not running:
+        for event in pygame.event.get():
+            if event.type == pygame.quit: sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    running = True
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                startButton.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if startButton.release(event.pos):
+                    running = True
 
 '''
 background = Screen(["rsc/Player/MD.png"], [0,0], size, 10)
@@ -95,17 +95,17 @@ while True:
         screen.fill(bgColor)
         screen.blit(singleplayer.surface, singleplayer.rect)
         screen.blit(exit.surface, exit.rect)
-        pygame.display.flip()'''
+        pygame.display.flip()
+        
+        
+'''
+timer = Score([80, height - 25], "Time: ", 36)
+timerWait = 0
+timerWaitMax = 6
 
-
-
-#timer = Score([80, height - 25], "Time: ", 36)
-#timerWait = 0
-#timerWaitMax = 6
-
-#Score = Score([80, height - 50], "Score: ", 36)
-#if Butterfly = self.living = True:
-#Score = Score + 100
+Score = Score([80, height - 50], "Score: ", 36)
+if Butterfly = self.living = True:
+Score = Score + 100
 
 
 
@@ -115,7 +115,7 @@ player = Player([width / 2, height / 2])
 #75 for both
 healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
 #600
-
+'''
 butterflys = []
 butterflys += [Butterfly("rsc/Butterfly/Butterfly.png", [1, 2], [100, 125])]
 
@@ -237,18 +237,4 @@ while True:
     pygame.display.flip()
     print "draw:", time.time() - st
     clock.tick(60)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
