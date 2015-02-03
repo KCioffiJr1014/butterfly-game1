@@ -33,7 +33,7 @@ startButton2 = Button([width-365, height-225],
                     "rsc/Startscreen/options.png",
                     "rsc/Startscreen/optionshighlighted.png")
                                     
-startButton3 = Button([width-1aaaaa05, height-225],
+startButton3 = Button([width-105, height-225],
                     "rsc/Startscreen/quit.png",
                     "rsc/Startscreen/quit.png")
                                      
