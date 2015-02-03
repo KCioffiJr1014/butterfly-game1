@@ -54,16 +54,7 @@ while True:
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton.release(event.pos):
                     running = True
-		for event in pygame.event.get():
-			if event.type == pygame.quit: sys.exit()
-			if event.type == pygame.KEYDOWN:
-				if event.key == pygame.K_RETURN:
-					running = False
-			if event.type == pygame.MOUSEBUTTONDOWN:
-				startButton3.click(event.pos)
-			if event.type == pygame.MOUSEBUTTONUP:
-				if startButton3.release(event.pos):
-					running = False
+		 
         
         screen.fill(bgColor)
         screen.blit(bgImage, bgRect)
