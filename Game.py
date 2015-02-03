@@ -12,8 +12,8 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
-width = 903
-height = 501
+width = 800
+height = 600
 fullscreen = 0
 altFlag = False
 size = width, height
@@ -25,15 +25,15 @@ bgRect = bg.get_rect()
 bgImage = pygame.image.load("rsc/Startscreen/startscreen.png")
 bgRect = bgImage.get_rect()
 
-startButton = Button([width-710, height-125], 
+startButton = Button([width-610, height-225], 
                     "rsc/Startscreen/start.png",
                     "rsc/Startscreen/starthighlighted.png")
                                      
-startButton2 = Button([width-465, height-125],
+startButton2 = Button([width-365, height-225],
                     "rsc/Startscreen/options.png",
                     "rsc/Startscreen/optionshighlighted.png")
                                     
-startButton3 = Button([width-205, height-125],
+startButton3 = Button([width-1aaaaa05, height-225],
                     "rsc/Startscreen/quit.png",
                     "rsc/Startscreen/quit.png")
                                      
@@ -54,7 +54,7 @@ while True:
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton.release(event.pos):
                     running = True
-		 
+		
         
         screen.fill(bgColor)
         screen.blit(bgImage, bgRect)
