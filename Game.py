@@ -12,8 +12,8 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
-width = 800
-height = 600
+width = 903
+height = 501
 fullscreen = 0
 altFlag = False
 size = width, height
@@ -25,7 +25,7 @@ bgRect = bg.get_rect()
 bgImage = pygame.image.load("rsc/Startscreen/startscreen.png")
 bgRect = bgImage.get_rect()
 
-startButton = Button([width/4, height-300], 
+startButton = Button([width/4, height-100], 
                     "rsc/Startscreen/start.png",
                     "rsc/Startscreen/starthighlighted.png")
                                      
