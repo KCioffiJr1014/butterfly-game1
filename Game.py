@@ -54,7 +54,7 @@ while True:
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton.release(event.pos):
                     running = True
-		
+        
         
         screen.fill(bgColor)
         screen.blit(bgImage, bgRect)
@@ -171,7 +171,9 @@ while True:
             bully.collidePlayer(player)
             for projectile in projectiles:
                 bully.collide_attack(projectile)
-                #projectile.collide_wasp(bully)
+                if projectile.collideGust(bully):
+                    projectiles.remove(projectile)
+                
 
         #print "collide:", time.time() - st
         for butterfly in butterflys:
@@ -201,6 +203,11 @@ while True:
         #screen.blit(Score.image, Score.rect)
         for projectile in projectiles:
             screen.blit(projectile.image, projectile.rect)
+        
+       
+        for projectile in projectiles:
+            if not projectile.living:
+                projectiles.remove(projectile) 
         pygame.display.flip()
         #print "draw:", time.time() - st
         clock.tick(60)
