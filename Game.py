@@ -54,6 +54,18 @@ while True:
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton.release(event.pos):
                     running = True
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                startButton2.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if startButton2.release(event.pos):
+                    running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                startButton3.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if startButton3.release(event.pos):
+                    running = False
+                    sys.quit()
+                
         
         
         screen.fill(bgColor)
@@ -77,8 +89,8 @@ while True:
 
 
 
-
-    player = Player([width / 2, height / 2])
+    player = Player([375,300])
+    #player = Player([width / 4, height / 2])
     #75 for both
     healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
     #600
@@ -130,6 +142,8 @@ while True:
                 elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                     altFlag = False
 
+    
+    
         #print "controls:", time.time() - st
         if len(butterflys) < 10:
             if random.randint(0, 1 * 60) == 0:

@@ -37,7 +37,10 @@ class Player():
         self.maxHealth = 20
         self.nodamage = 0
         self.living = True
+        self.place(pos)
         
+    def place(self, pos):
+		self.rect.center = pos
     
     def update(self, width, height):
         self.didBounceX = False
