@@ -82,7 +82,7 @@ while True:
     #timer = Score([80, height - 25], "Time: ", 36)
     #timerWait = 0
     #timerWaitMax = 6
-
+s
     #Score = Score([80, height - 50], "Score: ", 36)
     #if Butterfly = self.living = True:
     #Score = Score + 100
@@ -211,7 +211,7 @@ while True:
         for wasp in wasps:
             screen.blit(wasp.image, wasp.rect)
         #for wasphealthbar in wasphealthbar:
-         #   screen.blit(wasphealthbar.image, wasphealthbar.rect)
+        #screen.blit(wasphealthbar.image, wasphealthbar.rect)
         screen.blit(player.image, player.rect)
         #screen.blit(timer.image, timer.rect)
         #screen.blit(Score.image, Score.rect)
