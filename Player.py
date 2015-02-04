@@ -38,6 +38,7 @@ class Player():
         self.nodamage = 0
         self.living = True
         self.place(pos)
+        self.damage = 2
         
     def place(self, pos):
 		self.rect.center = pos
