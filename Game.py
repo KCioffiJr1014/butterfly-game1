@@ -89,7 +89,7 @@ s
 
 
 
-    player = Player([375,300])
+	player = Player([375,300])
     #player = Player([width / 4, height / 2])
     #75 for both
     healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
