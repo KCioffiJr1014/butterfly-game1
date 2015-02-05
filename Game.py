@@ -125,7 +125,19 @@ while True:
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton.release(event.pos):
                     running = True
-		
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                startButton2.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if startButton2.release(event.pos):
+                    running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                startButton3.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if startButton3.release(event.pos):
+                    running = False
+                    sys.quit()
+                
+        
         
         screen.fill(bgColor)
         screen.blit(bgImage, bgRect)
@@ -149,8 +161,8 @@ while True:
 >>>>>>> origin/master
 
 
-
-    player = Player([width / 2, height / 2])
+	player = Player([375,300])
+    #player = Player([width / 4, height / 2])
     #75 for both
     healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
     #600
@@ -294,6 +306,8 @@ while True:
                 elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                     altFlag = False
 
+    
+    
         #print "controls:", time.time() - st
         if len(butterflys) < 10:
             if random.randint(0, 1 * 60) == 0:
@@ -336,7 +350,9 @@ while True:
             bully.collidePlayer(player)
             for projectile in projectiles:
                 bully.collide_attack(projectile)
-                #projectile.collide_wasp(bully)
+                if projectile.collideGust(bully):
+                    projectiles.remove(projectile)
+                
 
         #print "collide:", time.time() - st
         for butterfly in butterflys:
@@ -360,12 +376,17 @@ while True:
         for wasp in wasps:
             screen.blit(wasp.image, wasp.rect)
         #for wasphealthbar in wasphealthbar:
-         #   screen.blit(wasphealthbar.image, wasphealthbar.rect)
+        #screen.blit(wasphealthbar.image, wasphealthbar.rect)
         screen.blit(player.image, player.rect)
         #screen.blit(timer.image, timer.rect)
         #screen.blit(Score.image, Score.rect)
         for projectile in projectiles:
             screen.blit(projectile.image, projectile.rect)
+        
+       
+        for projectile in projectiles:
+            if not projectile.living:
+                projectiles.remove(projectile) 
         pygame.display.flip()
         #print "draw:", time.time() - st
         clock.tick(60)

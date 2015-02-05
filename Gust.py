@@ -22,6 +22,7 @@ class Gust():
         self.place(player.rect.center)
         self.radius = 30
         self.move()
+        self.living = True
       
     def move(self):
         self.rect = self.rect.move(self.speed)
@@ -33,7 +34,7 @@ class Gust():
         if self.rect.top < 0 or self.rect.bottom > height:
             self.speedy = 0
     
-    def WaspHit(self, other):
+    def collideGust(self, other):
 		if self != other:
 			if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
 				if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
@@ -47,5 +48,12 @@ class Gust():
         #self.speed = [self.speedx, self.speedy]
         self.move()
         self.collideWall(width, height)
+        
+    def distance(self, pt):
+        x1 = self.rect.center[0]
+        y1 = self.rect.center[1]
+        x2 = pt[0]
+        y2 = pt[1]
+        return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
         
     

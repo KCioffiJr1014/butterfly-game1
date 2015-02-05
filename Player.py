@@ -37,7 +37,11 @@ class Player():
         self.maxHealth = 20
         self.nodamage = 0
         self.living = True
+        self.place(pos)
+        self.damage = 2
         
+    def place(self, pos):
+		self.rect.center = pos
     
     def update(self, width, height):
         self.didBounceX = False
@@ -84,6 +88,20 @@ class Player():
                 self.speedy = 0
                 self.didBounceY = True
                 #print "hit xWall"
+                
+    def enemyCollide(self, other, effect):
+        if (self.rect.right > wasp.rect.left 
+            and self.rect.left < wasp.rect.right):
+                if (self.rect.bottom > wasp.rect.top and 
+                    self.rect.top < wasp.rect.bottom):
+                    self.hurt = True
+                    if self.nodamage == 0:
+                        self.modifyHealth(-wasp.damage)
+                        effect.update(self.health, self.maxHealth) 
+                        print self.health
+                    self.nodamage += 1
+                    if self.nodamage == 25:
+                        self.nodamage = 0
     
     def animate(self):
         if self.waitCount < self.maxWait:
