@@ -82,7 +82,7 @@ while True:
     #timer = Score([80, height - 25], "Time: ", 36)
     #timerWait = 0
     #timerWaitMax = 6
-s
+
     #Score = Score([80, height - 50], "Score: ", 36)
     #if Butterfly = self.living = True:
     #Score = Score + 100
