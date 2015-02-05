@@ -1,6 +1,5 @@
 import pygame
 
-<<<<<<< HEAD
 
 class Button():
         def __init__(self, pos, image, clickedImage = "" ):
@@ -24,8 +23,6 @@ class Button():
                                 return True
                 return False
 
-=======
->>>>>>> origin/master
 class Button:
     def __init__(self, location, unHighlighted,  highlighted):
         self.unHighlightedImage = pygame.image.load(unHighlighted)
@@ -35,7 +32,6 @@ class Button:
         self.clicked = False
         self.place(location)
 
-<<<<<<< HEAD
         
         def click(self, pt):
                 if self.collidePoint(pt):
@@ -52,7 +48,6 @@ class Button:
                         self.clicked = False
                         self.image = self.baseImage
                         return False
-=======
     def place(self, pos):
                 self.rect.center = pos
     
@@ -77,7 +72,6 @@ class Button:
                 self.clicked = False
                 self.image = self.unHighlightedImage
                 return False
->>>>>>> origin/master
         
     def update(self, width, height):
         pass

@@ -39,7 +39,6 @@ startButton3 = Button([width/1.2, height/1.7],
                                      
 startCharacter = pygame.image.load("rsc/Startscreen/startscreen.png",
                                 "rsc/Startscreen/startscreen.png")
-<<<<<<< HEAD
 '''
 while True:
 	while not running:
@@ -109,7 +108,7 @@ timerWaitMax = 6
 Score = Score([80, height - 50], "Score: ", 36)
 if Butterfly = self.living = True:
 Score = Score + 100
-=======
+
 
 running = False
 
@@ -158,7 +157,7 @@ while True:
     #if Butterfly = self.living = True:
     #Score = Score + 100
 
->>>>>>> origin/master
+
 
 
 	player = Player([375,300])
@@ -175,17 +174,14 @@ healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
 '''
 butterflys = []
 butterflys += [Butterfly("rsc/Butterfly/Butterfly.png", [1, 2], [100, 125])]
-=======
-    butterflys = []
-    butterflys += [Butterfly("rsc/Butterfly/Butterfly.png", [1, 2], [100, 125])]
+butterflys = []
+butterflys += [Butterfly("rsc/Butterfly/Butterfly.png", [1, 2], [100, 125])]
 
-    wasps = []
-    wasps += [Wasp("rsc/Wasp/Wasp.png", [1, 2], [100, 125])]
->>>>>>> origin/master
+wasps = []
+wasps += [Wasp("rsc/Wasp/Wasp.png", [1, 2], [100, 125])]
 
-    projectiles = []
+projectiles = []
 
-<<<<<<< HEAD
 projectiles = []
 
 while True:
@@ -266,7 +262,6 @@ while True:
     for bully in wasps:
         for victem in wasps:
             bully.collideWasp(victem)
-=======
     while running:
         st = time.time()
         for event in pygame.event.get():
@@ -346,7 +341,6 @@ while True:
         for bully in wasps:
             for victem in wasps:
                 bully.collideWasp(victem)
->>>>>>> origin/master
             bully.collidePlayer(player)
             for projectile in projectiles:
                 bully.collide_attack(projectile)
