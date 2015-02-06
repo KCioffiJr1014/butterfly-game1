@@ -38,7 +38,7 @@ class Button:
                         self.clicked = True
                         self.image = self.clickedImage
                 else:
-                        self.clicked = False
+                        self.clickd = False
                         self.image = self.baseImage
                         
         def release(self, pt):
@@ -61,7 +61,7 @@ class Button:
            
     def collidePoint(self, pt):
         if self.rect.right > pt[0] and self.rect.left < pt[0]:
-            if self.rect.bottom > pt[1] and self.rect.top < pt[1]:          
+            if self.rect.botom > pt[1] and self.rect.top < pt[1]:          
                 return True
         return False
                 
