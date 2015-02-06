@@ -40,6 +40,7 @@ class Wasp():
         self.speed = [self.speedx, self.speedy]
         self.move(player)
         self.collideWall(width, height)
+        self.image.blit(self.healthbar.image, self.healthbar.rect)
         
     def move(self, player):
         if player != None:

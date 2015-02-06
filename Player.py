@@ -30,6 +30,7 @@ class Player():
         self.maxGustCount = 10
         self.gustCoolDown = 0
         self.gustCoolDownMax = 100
+        self.gustdelay = 5
         self.radius = 20
         self.didBounceX = False
         self.didBounceY = False
@@ -154,7 +155,7 @@ class Player():
             self.speedx = 0
             
     
-    def collideWasp(self, other):
+    '''def collideWasp(self, other):
         if (self.rect.right > other.rect.left 
             and self.rect.left < other.rect.right):
                 if (self.rect.bottom > other.rect.top and 
@@ -166,7 +167,7 @@ class Player():
                         print self.health
                     self.nodamage += 1
                     if self.nodamage == 25:
-                        self.nodamage = 0
+                        self.nodamage = 0'''
     
     
     

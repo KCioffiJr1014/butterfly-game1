@@ -207,7 +207,7 @@ while True:
         screen.blit(healthbar.surface, healthbar.rect)
         for butterfly in butterflys:
             screen.blit(butterfly.image, butterfly.rect)
-            player.collideWasp(healthbar)
+            #player.collideWasp(healthbar)
         for wasp in wasps:
             screen.blit(wasp.image, wasp.rect)
         #for wasphealthbar in wasphealthbar:
