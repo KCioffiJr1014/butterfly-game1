@@ -120,15 +120,18 @@ class Wasp():
         if (self.rect.right > attack.rect.left and self.rect.left < attack.rect.right):
             if (self.rect.bottom > attack.rect.top and self.rect.top < attack.rect.bottom):
                 if (self.distToPoint(attack.rect.center) < self.radius + attack.radius):
+<<<<<<< HEAD
                     #self.life -= attack.damage
                     #self.healthbar.update()
                     #print "Hit", self.life
                     #if self.life <= 0:
+=======
                     print "Hit", self.health
                     self.health -= attack.damage
                     self.healthbar.update()
                     print "Hit Done", self.health
                     if self.health <= 0:
+>>>>>>> origin/master
                         self.living = False
                                             
     def distance(self, pt):

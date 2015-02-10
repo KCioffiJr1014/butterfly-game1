@@ -54,8 +54,10 @@ while True:
                     running = True
 
 '''
+run = False
+
 background = Screen(["rsc/Player/MD.png"], [0,0], size, 10)
-singleplayer = Button("Play", [350, 175], (0, 100, 100))
+#singleplayer = Button("Play", [350, 175], (0, 100, 100))
 endscreen = Screen(["rsc/Player/deadscreen.png"], [0,0], size, 10)
 #MENU----------------
 while True:
@@ -108,7 +110,7 @@ timerWaitMax = 6
 Score = Score([80, height - 50], "Score: ", 36)
 if Butterfly = self.living = True:
 Score = Score + 100
-
+'''
 
 running = False
 
@@ -166,12 +168,12 @@ while True:
     healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
     #600
 
-<<<<<<< HEAD
+
 player = Player([width / 2, height / 2])
 #75 for both
 healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
 #600
-'''
+
 butterflys = []
 butterflys += [Butterfly("rsc/Butterfly/Butterfly.png", [1, 2], [100, 125])]
 butterflys = []
