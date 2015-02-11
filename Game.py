@@ -19,6 +19,9 @@ altFlag = False
 size = width, height
 screen = pygame.display.set_mode(size)
 
+
+player = Player([375,300])
+
 bgColor = r, g, b = 0, 0, 0
 bg = pygame.image.load("rsc/Background/BG2.png")
 bgRect = bg.get_rect()
@@ -57,9 +60,14 @@ while True:
 run = False
 
 background = Screen(["rsc/Player/MD.png"], [0,0], size, 10)
-#singleplayer = Button("Play", [350, 175], (0, 100, 100))
+singleplayer = Button("rsc/Player", [350, 175], (0, 100, 100))
 endscreen = Screen(["rsc/Player/deadscreen.png"], [0,0], size, 10)
 #MENU----------------
+
+#75 for both
+healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
+#600
+
 while True:
     while not run and player.living:
         #print run, player.living
@@ -93,6 +101,7 @@ while True:
                         sys.exit()
                         
 #----------------------------------------------------
+       
         singleplayer.update((200, 10, 10))
         exit.update((200, 10, 10))
         
@@ -169,10 +178,6 @@ while True:
     #600
 
 
-player = Player([width / 2, height / 2])
-#75 for both
-healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
-#600
 
 butterflys = []
 butterflys += [Butterfly("rsc/Butterfly/Butterfly.png", [1, 2], [100, 125])]
