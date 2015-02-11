@@ -166,7 +166,7 @@ while True:
                 bully.collideWasp(victem)
             bully.collidePlayer(player)
             for projectile in projectiles:
-                bully.collide_attack(projectile)
+                bully.collideGust(projectile)
                 if projectile.collideGust(bully):
                     projectiles.remove(projectile)
                 
