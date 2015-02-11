@@ -60,7 +60,7 @@ while True:
 run = False
 
 background = Screen(["rsc/Player/MD.png"], [0,0], size, 10)
-singleplayer = Button("rsc/Player", [350, 175], (0, 100, 100))
+singleplayer = Button("rsc/Play.png", [350, 175], (0, 100, 100))
 endscreen = Screen(["rsc/Player/deadscreen.png"], [0,0], size, 10)
 #MENU----------------
 
