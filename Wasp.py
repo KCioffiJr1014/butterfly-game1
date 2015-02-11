@@ -10,7 +10,7 @@ class Wasp():
         self.speedx = speed[0]
         self.speedy = speed[0]
         self.speed = [self.speedx, self.speedy]
-        self.maxSpeed = 20
+        self.maxSpeed = 5
         self.place(pos)
         self.didBounceX = False
         self.didBounceY = False
@@ -23,7 +23,7 @@ class Wasp():
         self.health = 20
         self.didHit = False
         self.maxHealth = 25
-        self.detectionRadius = 80
+        self.detectionRadius = 120
         
     def place(self, pos):
         self.rect.center = pos
