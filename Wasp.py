@@ -1,6 +1,7 @@
 import pygame, math
 from wasphealth import WaspHealthBar
 from Gust import Gust
+from Player import Player
 
 class Wasp():
     def __init__(self, image, speed = [0,0], pos = [0,0]):
@@ -102,11 +103,11 @@ class Wasp():
             return False
     
     def collideGust(self, other):
-		if self != other:
-			if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
-				if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
-					if (self.radius + other.radius) > self.distance(other.rect.center):
-						self.living = False
+        if self != other:
+            if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+                if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+                    if (self.radius + other.radius) > self.distance(other.rect.center):
+                        self.living = False
                             
     def collidePlayer(self, other):
         if self != other:
@@ -138,11 +139,32 @@ class Wasp():
         y2 = pt[1]
         return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
         
-    '''def Hurt():
-		hurt = 0
-		if collidePlayer == True:
-			hurt += 1
-    '''     
-            
-		
+ 
+if __name__ == "__main__":
+     
+    pygame.init()
+
+    clock = pygame.time.Clock()
+
+    width = 800
+    height = 600
+    fullscreen = 0
+    altFlag = False
+    size = width, height
+    screen = pygame.display.set_mode(size)
+
+    bgColor = r, g, b = 0, 0, 0           
         
+    wasp = Wasp("rsc/Wasp/Wasp.png", [1, 2], [100, 125])
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: sys.exit()
+        
+        wasp.update(width, height)
+        
+        screen.fill(bgColor)
+        screen.blit(wasp.image, wasp.rect)
+        pygame.display.flip()
+        clock.tick(60)
+    
+    
