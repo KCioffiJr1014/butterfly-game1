@@ -34,7 +34,7 @@ class WaspHealthBar():
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect()
         self.wasp = wasp
-        self.rect.center = [self.wasp.rect.center[0],self.wasp.rect.center[1]-20]
+        #self.rect.center = [self.wasp.rect.center[0],self.wasp.rect.center[1]]
         #if pygame.mixer:
         #    self.healthSound = pygame.mixer.Sound("health.wav")
        
@@ -109,4 +109,3 @@ class WaspHealthBar():
           #  self.living = False
         #self.image = self.images[self.frame]
         self.image = self.images[self.frame]
-        self.rect.center = [self.wasp.rect.center[0],self.wasp.rect.center[1]-20]

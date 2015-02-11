@@ -41,6 +41,7 @@ class Wasp():
         self.speed = [self.speedx, self.speedy]
         self.move(player)
         self.collideWall(width, height)
+        self.healthbar.update()
         self.image.blit(self.healthbar.image, self.healthbar.rect)
         
     def move(self, player):
@@ -153,13 +154,14 @@ if __name__ == "__main__":
     screen = pygame.display.set_mode(size)
 
     bgColor = r, g, b = 0, 0, 0           
-        
+    player = Player([375,300])
+    
     wasp = Wasp("rsc/Wasp/Wasp.png", [1, 2], [100, 125])
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
         
-        wasp.update(width, height)
+        wasp.update(width, height, player)
         
         screen.fill(bgColor)
         screen.blit(wasp.image, wasp.rect)
