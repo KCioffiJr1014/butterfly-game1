@@ -66,16 +66,25 @@ class Player():
         self.rect = self.rect.move(self.speed)
         
         if 0 < self.gustCount < self.maxGustCount:
-            self.gustCount += 1
-            self.gust.go(self)
+            self.gustCount += 5
         elif self.gustCount >= self.maxGustCount:
             self.gustCount = 0
             self.gusting = False
+            self.gustCoolDown = 1
+            
+            
+            
+        if 1 <= self.gustCoolDown < self.gustCoolDownMax:
+            self.gustCoolDown += 1
+        else:
+            self.gustCoolDown = 0
         
     def attack(self, atk):
         if atk == "gust" and self.gustCount == 0 and self.gustCoolDown == 0:
 			self.gusting = True
-			return Gust(self)
+			return [Gust(self)]
+        self.gustCount += 1
+        return []
 
     def collideWall(self, width, height):
         if not self.didBounceX:

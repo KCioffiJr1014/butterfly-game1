@@ -108,7 +108,7 @@ while True:
                 elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("left")
                 elif (event.key == pygame.K_e or event.key == pygame.K_j):
-                    projectiles += [player.attack("gust")]
+                    projectiles += player.attack("gust")
                 elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                     altFlag = True
                 elif (event.key == pygame.K_RETURN) and altFlag:
