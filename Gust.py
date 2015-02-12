@@ -20,7 +20,7 @@ class Gust():
         self.rect = self.image.get_rect()
         self.damage = 10
         self.place(player.rect.center)
-        self.radius = 30
+        self.radius = 20
         self.move()
         self.living = True
       
