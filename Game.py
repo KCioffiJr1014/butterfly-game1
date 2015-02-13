@@ -88,9 +88,11 @@ while True:
 
 
     butterflys = []
+    maxButterfly = 5
     butterflys += [Butterfly("rsc/Butterfly/Butterfly.png", [1, 2], [100, 125])]
 
     wasps = []
+    maxWasp = 3
     wasps += [Wasp("rsc/Wasp/Wasp.png", [1, 2], [100, 125])]
 
     projectiles = []
@@ -133,18 +135,18 @@ while True:
                 elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                     altFlag = False
 
-        if len(butterflys) < 10:
+        if len(butterflys) < maxButterfly:
             if random.randint(0, 1 * 60) == 0:
                 butterflys += [Butterfly("rsc/Butterfly/Butterfly2.png",
                                          [random.randint(0, 10), random.randint(0, 10)],
-                                         [random.randint(100, width - 100), random.randint(100, height - 100)]
+                                         [random.randint(100, width - 400), random.randint(100, height - 400)]
                 )]
 
-        if len(wasps) < 10:
+        if len(wasps) < maxWasp:
             if random.randint(0, 5 * 60) == 0:
                 wasps += [Wasp("rsc/Wasp/Wasp.png",
                                [random.randint(0, 10), random.randint(0, 10)],
-                               [random.randint(100, width - 100), random.randint(100, height - 100)]
+                               [random.randint(400, width - 100), random.randint(400, height - 100)]
                 )]
                 
         player.update(width, height)

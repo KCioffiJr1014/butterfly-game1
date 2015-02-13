@@ -3,20 +3,19 @@ import math,sys,pygame
 class Gust():
     def __init__(self,player):
         self.facing = player.facing
-        self.upImages = [pygame.image.load("rsc/Projectiles/gust.png")]
-        self.downImages = [pygame.image.load("rsc/Projectiles/gustb.png")]
-        self.leftImages = [pygame.image.load("rsc\Projectiles/gustl.png")]
-        self.rightImages = [pygame.image.load("rsc\Projectiles/gustr.png")]
-
+      
         if self.facing == "up":
+            self.image = pygame.image.load("rsc/Projectiles/gustu.png")
             self.speed = [0, -5]
         elif self.facing == "down":
+            self.image = pygame.image.load("rsc/Projectiles/gustd.png")
             self.speed = [0, 5]
         elif self.facing == "right":
+            self.image = pygame.image.load("rsc/Projectiles/gustr.png")
             self.speed = [5, 0]
         elif self.facing == "left":
+            self.image = pygame.image.load("rsc/Projectiles/gustl.png")
             self.speed = [-5, 0]
-        self.image = pygame.image.load("rsc/Projectiles/gust.png")
         self.rect = self.image.get_rect()
         self.damage = 10
         self.place(player.rect.center)
@@ -55,5 +54,28 @@ class Gust():
         x2 = pt[0]
         y2 = pt[1]
         return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
+        
+    def animate(self):
+        if self.waitCount < self.maxWait:
+            self.waitCount += 1
+        else:
+            self.waitCount = 0
+            self.facingChanged = True
+            if self.frame < self.maxFrame:
+                self.frame += 1
+            else:
+                self.frame = 0
+        
+        if self.changed:    
+            if self.facing == "up":
+                self.images = self.upImages
+            elif self.facing == "down":
+                self.images = self.downImages
+            elif self.facing == "right":
+                self.images = self.rightImages
+            elif self.facing == "left":
+                self.images = self.leftImages
+            
+            self.image = self.images[self.frame]
         
     

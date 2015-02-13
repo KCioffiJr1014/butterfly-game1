@@ -29,7 +29,7 @@ class Player():
         self.gustCount = 0
         self.maxGustCount = 10
         self.gustCoolDown = 0
-        self.gustCoolDownMax = 100
+        self.gustCoolDownMax = 50
         self.gustdelay = 5
         self.radius = 20
         self.didBounceX = False
@@ -42,7 +42,7 @@ class Player():
         self.damage = 2
         
     def place(self, pos):
-		self.rect.center = pos
+        self.rect.center = pos
     
     def update(self, width, height):
         self.didBounceX = False
@@ -52,6 +52,9 @@ class Player():
         self.collideWall(width, height)
         self.animate()
         self.facingChanged = False
+        if self.gustCoolDown > 0:
+            self.gustCoolDown -=1
+        
    
    
     def modifyHealth (self, amount):
@@ -65,25 +68,12 @@ class Player():
     def move(self):
         self.rect = self.rect.move(self.speed)
         
-        if 0 < self.gustCount < self.maxGustCount:
-            self.gustCount += 5
-        elif self.gustCount >= self.maxGustCount:
-            self.gustCount = 0
-            self.gusting = False
-            self.gustCoolDown = 1
-            
-            
-            
-        if 1 <= self.gustCoolDown < self.gustCoolDownMax:
-            self.gustCoolDown += 1
-        else:
-            self.gustCoolDown = 0
         
     def attack(self, atk):
-        if atk == "gust" and self.gustCount == 0 and self.gustCoolDown == 0:
-			self.gusting = True
-			return [Gust(self)]
-        self.gustCount += 1
+        if atk == "gust" and self.gustCoolDown == 0:
+            self.gusting = True
+            self.gustCoolDown = self.gustCoolDownMax
+            return [Gust(self)]
         return []
 
     def collideWall(self, width, height):
@@ -182,13 +172,13 @@ class Player():
     
     
     def collideQueenWasp(self, other):
-		if self != other:
-			if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
-				if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
-					if (self.radius + other.radius) > self.distance(other.rect.center):
-						self.living = False
+        if self != other:
+            if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+                if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+                    if (self.radius + other.radius) > self.distance(other.rect.center):
+                        self.living = False
                         
-						
+                        
         
         
         
