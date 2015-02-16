@@ -22,7 +22,7 @@ class Wasp():
         self.damage = 1
         self.health = 20
         self.didHit = False
-        self.maxHealth = 50
+        self.maxHealth = 120
         self.detectionRadius = 150
         
     def place(self, pos):
