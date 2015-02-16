@@ -2,6 +2,7 @@ import pygame, math
 from Gust import Gust
 from health import *
 
+
 class Player():
     def __init__(self, pos):
         self.upImages = [pygame.image.load("rsc/Player/MU.png"),
@@ -34,12 +35,12 @@ class Player():
         self.radius = 20
         self.didBounceX = False
         self.didBounceY = False
-        self.health = 20
-        self.maxHealth = 20
+        self.health = 500
+        self.maxHealth = 1000
         self.nodamage = 0
         self.living = True
         self.place(pos)
-        self.damage = 2
+        self.damage = 40
         
     def place(self, pos):
         self.rect.center = pos
@@ -90,13 +91,13 @@ class Player():
                 #print "hit xWall"
                 
     def enemyCollide(self, other, effect):
-        if (self.rect.right > wasp.rect.left 
-            and self.rect.left < wasp.rect.right):
-                if (self.rect.bottom > wasp.rect.top and 
-                    self.rect.top < wasp.rect.bottom):
+        if (self.rect.right > other.rect.left 
+            and self.rect.left < other.rect.right):
+                if (self.rect.bottom > other.rect.top and 
+                    self.rect.top < other.rect.bottom):
                     self.hurt = True
                     if self.nodamage == 0:
-                        self.modifyHealth(-wasp.damage)
+                        self.modifyHealth(-other.damage)
                         effect.update(self.health, self.maxHealth) 
                         print self.health
                     self.nodamage += 1

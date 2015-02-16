@@ -166,6 +166,7 @@ while True:
         for bully in wasps:
             for victem in wasps:
                 bully.collideWasp(victem)
+                player.enemyCollide(wasp,healthbar)
             bully.collidePlayer(player)
             for projectile in projectiles:
                 bully.collideGust(projectile)

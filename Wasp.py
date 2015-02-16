@@ -1,7 +1,7 @@
 import pygame, math
 from wasphealth import WaspHealthBar
 from Gust import Gust
-from Player import Player
+
 
 class Wasp():
     def __init__(self, image, speed = [0,0], pos = [0,0]):
@@ -20,7 +20,7 @@ class Wasp():
         self.life = True 
         self.maxLife = True
         self.damage = 1
-        self.health = 20
+        self.health = 120
         self.didHit = False
         self.maxHealth = 120
         self.detectionRadius = 150
@@ -154,14 +154,14 @@ if __name__ == "__main__":
     screen = pygame.display.set_mode(size)
 
     bgColor = r, g, b = 0, 0, 0           
-    player = Player([375,300])
+    #player = Player([375,300])
     
     wasp = Wasp("rsc/Wasp/Wasp.png", [1, 2], [100, 125])
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
         
-        wasp.update(width, height, player)
+        #wasp.update(width, height, player)
         
         screen.fill(bgColor)
         screen.blit(wasp.image, wasp.rect)
