@@ -5,6 +5,7 @@ from Wasp import Wasp
 from Screen import Screen
 from Menu import Button
 from health import HealthBar
+from spray import Spray
 
 # from QueenWasp import QueenWasp
 
@@ -94,6 +95,12 @@ while True:
     wasps = []
     maxWasp = 3
     wasps += [Wasp("rsc/Wasp/Wasp.png", [1, 2], [100, 125])]
+    
+    wasps = []
+    maxQueenWasp = 1
+    Queenwasps += [QueenWasp("rsc/Wasp/QueenWasp.png", [1, 2], [100, 125])]
+    
+    
 
     projectiles = []
 
@@ -111,6 +118,8 @@ while True:
                     player.go("left")
                 elif (event.key == pygame.K_e or event.key == pygame.K_j):
                     projectiles += player.attack("gust")
+                elif (event.key == pygame.K_e or event.key == pygame.K_k):
+                    projectiles += player.attack("spray")
                 elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                     altFlag = True
                 elif (event.key == pygame.K_RETURN) and altFlag:
@@ -132,6 +141,8 @@ while True:
                     player.go("stop left")
                 elif (event.key == pygame.K_j ):
                     player.attack("stop gust")
+                elif (event.key == pygame.K_k ):
+                    player.attack("stop spray")
                 elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                     altFlag = False
 
@@ -143,6 +154,13 @@ while True:
                 )]
 
         if len(wasps) < maxWasp:
+            if random.randint(0, 5 * 60) == 0:
+                wasps += [Wasp("rsc/Wasp/Wasp.png",
+                               [random.randint(0, 10), random.randint(0, 10)],
+                               [random.randint(400, width - 100), random.randint(400, height - 100)]
+                )]
+        
+        if len(Queenwasps) < maxQueen:
             if random.randint(0, 5 * 60) == 0:
                 wasps += [Wasp("rsc/Wasp/Wasp.png",
                                [random.randint(0, 10), random.randint(0, 10)],
@@ -171,6 +189,9 @@ while True:
             for projectile in projectiles:
                 bully.collideGust(projectile)
                 if projectile.collideGust(bully):
+                    projectiles.remove(projectile)
+                bully.collideSpray(projectile)
+                if projectile.collideSpray(bully):
                     projectiles.remove(projectile)
                 
 
