@@ -97,7 +97,7 @@ while True:
 
     projectiles = []
 
-    while running:
+    while running and player.living:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             if event.type == pygame.KEYDOWN:
@@ -201,3 +201,22 @@ while True:
         #print "draw:", time.time() - st
         clock.tick(60)
 
+'''
+    while running and not player.living:
+        for event in pygame.event.get():
+            if event.type == pygame.quit: sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    running = True
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                startButton.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if startButton.release(event.pos):
+                    running = True
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                startButton2.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if startButton2.release(event.pos):
+                    running = False
+                    sys.exit()
+        '''
