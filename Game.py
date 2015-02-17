@@ -195,6 +195,12 @@ while True:
         for wasp in wasps:
             screen.blit(wasp.image, wasp.rect)
         screen.blit(player.image, player.rect)
+        
+        while player.living == False:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: sys.exit()
+                print "dead me"
+        
         for projectile in projectiles:
             screen.blit(projectile.image, projectile.rect)
         pygame.display.flip()

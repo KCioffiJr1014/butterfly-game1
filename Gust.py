@@ -17,7 +17,7 @@ class Gust():
             self.image = pygame.image.load("rsc/Projectiles/gustl.png")
             self.speed = [-5, 0]
         self.rect = self.image.get_rect()
-        self.damage = 10
+        self.damage = 20
         self.place(player.rect.center)
         self.radius = 20
         self.move()
