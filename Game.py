@@ -96,9 +96,9 @@ while True:
     maxWasp = 3
     wasps += [Wasp("rsc/Wasp/Wasp.png", [1, 2], [100, 125])]
     
-    wasps = []
-    maxQueenWasp = 1
-    Queenwasps += [QueenWasp("rsc/Wasp/QueenWasp.png", [1, 2], [100, 125])]
+    QueenWasps = []
+    maxQueenWasps = 1
+    QueenWasps += [QueenWasps("rsc/Wasp/QueenWasp.png", [1, 2], [100, 125])]
     
     
 
