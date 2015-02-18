@@ -23,7 +23,7 @@ class Wasp():
         self.health = 80
         self.didHit = False
         self.maxHealth = 80
-        self.detectionRadius = 150
+        self.detectionRadius = 100
         
     def place(self, pos):
         self.rect.center = pos
@@ -103,12 +103,12 @@ class Wasp():
                         return True
             return False
     
-    def collideGust(self, other):
+    '''def collideGust(self, other):
         if self != other:
             if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
                 if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
                     if (self.radius + other.radius) > self.distance(other.rect.center):
-                        self.living = False
+                        self.living = False'''
                             
     def collidePlayer(self, other):
         if self != other:
@@ -131,7 +131,20 @@ class Wasp():
                     print "Hit Done", self.health
                     if self.health <= 0:
                         self.living = False
-                                            
+    def collideSpray(self, attack):
+        if (self.rect.right > attack.rect.left and self.rect.left < attack.rect.right):
+            if (self.rect.bottom > attack.rect.top and self.rect.top < attack.rect.bottom):
+                if (self.distToPoint(attack.rect.center) < self.radius + attack.radius):
+                    self.life -= attack.damage
+                    self.healthbar.update()
+                print "Hit", self.life
+                if self.life <= 0:
+                    self.health -= attack.damage
+                    self.healthbar.update()
+                    print "Hit Done", self.health
+                    if self.health <= 0:
+                        self.living = False
+    
     def distance(self, pt):
         x1 = self.rect.center[0]
         y1 = self.rect.center[1]

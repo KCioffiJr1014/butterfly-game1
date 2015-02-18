@@ -5,6 +5,7 @@ from Wasp import Wasp
 from Screen import Screen
 from Menu import Button
 from health import HealthBar
+from spray import Spray
 
 # from QueenWasp import QueenWasp
 
@@ -94,10 +95,16 @@ while True:
     wasps = []
     maxWasp = 3
     wasps += [Wasp("rsc/Wasp/Wasp.png", [1, 2], [100, 125])]
+    
+    wasps = []
+    maxQueenWasp = 1
+    Queenwasps += [QueenWasp("rsc/Wasp/QueenWasp.png", [1, 2], [100, 125])]
+    
+    
 
     projectiles = []
 
-    while running:
+    while running and player.living:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: sys.exit()
             if event.type == pygame.KEYDOWN:
@@ -111,6 +118,8 @@ while True:
                     player.go("left")
                 elif (event.key == pygame.K_e or event.key == pygame.K_j):
                     projectiles += player.attack("gust")
+                elif (event.key == pygame.K_e or event.key == pygame.K_k):
+                    projectiles += player.attack("spray")
                 elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                     altFlag = True
                 elif (event.key == pygame.K_RETURN) and altFlag:
@@ -132,6 +141,8 @@ while True:
                     player.go("stop left")
                 elif (event.key == pygame.K_j ):
                     player.attack("stop gust")
+                elif (event.key == pygame.K_k ):
+                    player.attack("stop spray")
                 elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                     altFlag = False
 
@@ -143,6 +154,13 @@ while True:
                 )]
 
         if len(wasps) < maxWasp:
+            if random.randint(0, 5 * 60) == 0:
+                wasps += [Wasp("rsc/Wasp/Wasp.png",
+                               [random.randint(0, 10), random.randint(0, 10)],
+                               [random.randint(400, width - 100), random.randint(400, height - 100)]
+                )]
+        
+        if len(Queenwasps) < maxQueen:
             if random.randint(0, 5 * 60) == 0:
                 wasps += [Wasp("rsc/Wasp/Wasp.png",
                                [random.randint(0, 10), random.randint(0, 10)],
@@ -172,6 +190,9 @@ while True:
                 bully.collideGust(projectile)
                 if projectile.collideGust(bully):
                     projectiles.remove(projectile)
+                bully.collideSpray(projectile)
+                if projectile.collideSpray(bully):
+                    projectiles.remove(projectile)
                 
 
         for butterfly in butterflys:
@@ -195,9 +216,34 @@ while True:
         for wasp in wasps:
             screen.blit(wasp.image, wasp.rect)
         screen.blit(player.image, player.rect)
+        
+        while player.living == False:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: sys.exit()
+                print "dead me"
+        
         for projectile in projectiles:
             screen.blit(projectile.image, projectile.rect)
         pygame.display.flip()
         #print "draw:", time.time() - st
         clock.tick(60)
 
+'''
+    while running and not player.living:
+        for event in pygame.event.get():
+            if event.type == pygame.quit: sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    running = True
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                startButton.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if startButton.release(event.pos):
+                    running = True
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                startButton2.click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP:
+                if startButton2.release(event.pos):
+                    running = False
+                    sys.exit()
+        '''
