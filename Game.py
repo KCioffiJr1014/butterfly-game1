@@ -229,6 +229,17 @@ while True:
         clock.tick(60)
 
 '''
+    endButton = Button([width/6, height/1.7], 
+                    "rsc/deathscreen/tryagain.png",
+                    "rsc/deathscreen/tryagainhighlighted.png")
+                                     
+    endButton2 = Button([width/2, height/1.7],
+                    "rsc/deathscreen/quit.png",
+                    "rsc/deathscreen/quithighlighted.png")
+                                     
+    endCharacter = pygame.image.load("rsc/deathscreen/deathscreen.png",
+                                "rsc/deathscreen/deathscreen.png")
+    
     while running and not player.living:
         for event in pygame.event.get():
             if event.type == pygame.quit: sys.exit()
@@ -236,14 +247,15 @@ while True:
                 if event.key == pygame.K_RETURN:
                     running = True
             if event.type == pygame.MOUSEBUTTONDOWN:
-                startButton.click(event.pos)
+                endButton.click(event.pos)
             if event.type == pygame.MOUSEBUTTONUP:
-                if startButton.release(event.pos):
+                if endButton.release(event.pos):
                     running = True
             if event.type == pygame.MOUSEBUTTONDOWN:
-                startButton2.click(event.pos)
+                endButton2.click(event.pos)
             if event.type == pygame.MOUSEBUTTONUP:
-                if startButton2.release(event.pos):
+                if endButton2.release(event.pos):
                     running = False
                     sys.exit()
-        '''
+        
+'''
