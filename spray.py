@@ -1,25 +1,25 @@
 import math,sys,pygame
 
-class Gust():
+class Spray():
     def __init__(self,player):
         self.facing = player.facing
       
         if self.facing == "up":
-            self.image = pygame.image.load("rsc/Projectiles/gustu.png")
+            self.image = pygame.image.load("rsc/Projectiles/spray.png")
             self.speed = [0, -5]
         elif self.facing == "down":
-            self.image = pygame.image.load("rsc/Projectiles/gustd.png")
+            self.image = pygame.image.load("rsc/Projectiles/spray.png")
             self.speed = [0, 5]
         elif self.facing == "right":
-            self.image = pygame.image.load("rsc/Projectiles/gustr.png")
+            self.image = pygame.image.load("rsc/Projectiles/spray.png")
             self.speed = [5, 0]
         elif self.facing == "left":
-            self.image = pygame.image.load("rsc/Projectiles/gustl.png")
+            self.image = pygame.image.load("rsc/Projectiles/spray.png")
             self.speed = [-5, 0]
         self.rect = self.image.get_rect()
-        self.damage = 20
+        self.damage = 400
         self.place(player.rect.center)
-        self.radius = 20
+        self.radius = 500
         self.move()
         self.living = True
       
@@ -33,6 +33,13 @@ class Gust():
         if self.rect.top < 0 or self.rect.bottom > height:
             self.speedy = 0
     
+    def collideSpray(self, other):
+		if self != other:
+			if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
+				if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
+					if (self.radius + other.radius) > self.distance(other.rect.center):
+						self.living = False
+                        
     def collideGust(self, other):
 		if self != other:
 			if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
@@ -79,3 +86,4 @@ class Gust():
             self.image = self.images[self.frame]
         
     
+

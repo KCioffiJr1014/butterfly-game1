@@ -1,5 +1,6 @@
 import pygame, math
 from Gust import Gust
+from spray import Spray
 from health import *
 
 
@@ -32,6 +33,12 @@ class Player():
         self.gustCoolDown = 0
         self.gustCoolDownMax = 50
         self.gustdelay = 5
+        self.spraying = False
+        self.sprayCount = 0
+        self.maxSprayCount = 10
+        self.sprayCoolDown = 0
+        self.sprayCoolDownMax = 50
+        self.spraydelay = 5
         self.radius = 20
         self.didBounceX = False
         self.didBounceY = False
@@ -55,6 +62,8 @@ class Player():
         self.facingChanged = False
         if self.gustCoolDown > 0:
             self.gustCoolDown -=1
+        if self.sprayCoolDown > 0:
+            self.sprayCoolDown -=1
         
    
    
@@ -75,6 +84,10 @@ class Player():
             self.gusting = True
             self.gustCoolDown = self.gustCoolDownMax
             return [Gust(self)]
+        if atk == "spray" and self.sprayCoolDown == 0:
+            self.spraying = True
+            self.sprayCoolDown = self.sprayCoolDownMax
+            return [Spray(self)]
         return []
 
     def collideWall(self, width, height):
