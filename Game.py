@@ -6,8 +6,7 @@ from Screen import Screen
 from Menu import Button
 from health import HealthBar
 from spray import Spray
-
-# from QueenWasp import QueenWasp
+from QueenWasp import QueenWasp
 
 pygame.init()
 
@@ -96,9 +95,9 @@ while True:
     maxWasp = 3
     wasps += [Wasp("rsc/Wasp/Wasp.png", [1, 2], [100, 125])]
     
-    QueenWasps = []
-    maxQueenWasps = 1
-    QueenWasps += [QueenWasps("rsc/Wasp/QueenWasp.png", [1, 2], [100, 125])]
+    queenWasps = []
+    maxqueenWasps = 1
+    queenWasps += [QueenWasp("rsc/Wasp/QueenWasp.png", [1, 2], [100, 125])]
     
     
 
@@ -160,9 +159,9 @@ while True:
                                [random.randint(400, width - 100), random.randint(400, height - 100)]
                 )]
         
-        if len(Queenwasps) < maxQueen:
+        if len(queenWasps) < maxqueenWasps:
             if random.randint(0, 5 * 60) == 0:
-                wasps += [Wasp("rsc/Wasp/Wasp.png",
+                queenWasps += [QueenWasp("rsc/Wasp/QueenWasp.png",
                                [random.randint(0, 10), random.randint(0, 10)],
                                [random.randint(400, width - 100), random.randint(400, height - 100)]
                 )]
@@ -174,6 +173,8 @@ while True:
             butterfly.update(width, height)
         for wasp in wasps:
             wasp.update(width, height, player)
+        for queenWasp in queenWasps:
+            queenWasp.update(width, height, player)
         for projectile in projectiles:
             projectile.update(width, height)
 
@@ -215,6 +216,9 @@ while True:
             screen.blit(butterfly.image, butterfly.rect)
         for wasp in wasps:
             screen.blit(wasp.image, wasp.rect)
+        screen.blit(player.image, player.rect)
+        for queenWasp in queenWasps:
+            screen.blit(queenWasp.image, wasp.rect)
         screen.blit(player.image, player.rect)
         
         while player.living == False:

@@ -17,7 +17,7 @@ class Spray():
             self.image = pygame.image.load("rsc/Projectiles/spray.png")
             self.speed = [-5, 0]
         self.rect = self.image.get_rect()
-        self.damage = 400
+        self.damage = 250
         self.place(player.rect.center)
         self.radius = 500
         self.move()
