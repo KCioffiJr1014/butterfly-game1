@@ -232,12 +232,12 @@ while True:
         #print "draw:", time.time() - st
         clock.tick(60)
 
-'''
-    endButton = Button([width/6, height/1.7], 
+
+    endButton = Button([width/5, height/2], 
                     "rsc/deathscreen/tryagain.png",
                     "rsc/deathscreen/tryagainhighlighted.png")
                                      
-    endButton2 = Button([width/2, height/1.7],
+    endButton2 = Button([width/3, height/2],
                     "rsc/deathscreen/quit.png",
                     "rsc/deathscreen/quithighlighted.png")
                                      
@@ -262,4 +262,7 @@ while True:
                     running = False
                     sys.exit()
         
-'''
+        screen.blit(endButton.image, endButton.rect)
+        screen.blit(endButton2.image, endButton2.rect)
+        
+
