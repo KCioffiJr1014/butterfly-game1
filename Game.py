@@ -12,6 +12,7 @@ pygame.init()
 
 clock = pygame.time.Clock()
 
+        
 width = 800
 height = 600
 fullscreen = 0
@@ -81,7 +82,7 @@ while True:
         pygame.display.flip()
         
 
-	player = Player([375,300])
+    player = Player([375,300])
     #75 for both
     healthbar = HealthBar([width - 75, 125])  #DEFAULT: 100 MODED: 200
     #600
@@ -219,13 +220,7 @@ while True:
         screen.blit(player.image, player.rect)
         for queenWasp in queenWasps:
             screen.blit(queenWasp.image, wasp.rect)
-        screen.blit(player.image, player.rect)
-        
-        while player.living == False:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT: sys.exit()
-                print "dead me"
-        
+        screen.blit(player.image, player.rect)        
         for projectile in projectiles:
             screen.blit(projectile.image, projectile.rect)
         pygame.display.flip()
@@ -233,17 +228,17 @@ while True:
         clock.tick(60)
 
 
-    endButton = Button([width/5, height/2], 
+    endButton = Button([width/4, height/2], 
                     "rsc/deathscreen/tryagain.png",
                     "rsc/deathscreen/tryagainhighlighted.png")
                                      
-    endButton2 = Button([width/3, height/2],
+    endButton2 = Button([width/1.5, height/2],
                     "rsc/deathscreen/quit.png",
                     "rsc/deathscreen/quithighlighted.png")
                                      
     endCharacter = pygame.image.load("rsc/deathscreen/deathscreen.png",
                                 "rsc/deathscreen/deathscreen.png")
-    
+    bgImage = pygame.image.load("rsc/deathscreen/deathscreen.png")
     while running and not player.living:
         for event in pygame.event.get():
             if event.type == pygame.quit: sys.exit()
@@ -262,7 +257,11 @@ while True:
                     running = False
                     sys.exit()
         
+        screen.fill(bgColor)
+        screen.blit(bgImage, bgRect)
         screen.blit(endButton.image, endButton.rect)
         screen.blit(endButton2.image, endButton2.rect)
-        
+        pygame.display.flip()
+        #print "draw:", time.time() - st
+        clock.tick(1)
 
