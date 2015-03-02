@@ -19,7 +19,7 @@ class Wasp():
         self.healthbar = WaspHealthBar(self)
         self.life = True 
         self.maxLife = True
-        self.damage = 1
+        self.damage = 50
         self.health = 80
         self.didHit = False
         self.maxHealth = 80
