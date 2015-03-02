@@ -179,6 +179,13 @@ if __name__ == "__main__":
         screen.fill(bgColor)
         screen.blit(wasp.image, wasp.rect)
         pygame.display.flip()
-        clock.tick(60)
+        clock.tick(60) 
+         def distance(self, pt):
+        x1 = self.rect.center[0]
+        y1 = self.rect.center[1]
+        x2 = pt[0]
+        y2 = pt[1]
+        return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
+        
     
     
