@@ -6,6 +6,7 @@ from Screen import Screen
 from Menu import Button
 from health import HealthBar
 from spray import Spray
+from Stinger import Stinger
 from QueenWasp import QueenWasp
 
 pygame.init()
@@ -99,6 +100,9 @@ while True:
     maxqueenWasps = 1
     queenWasps += [QueenWasp("rsc/Wasp/QueenWasp.png", [1, 2], [100, 125])]
     
+    stingers = []
+    maxStingers = 1
+    
     
 
     projectiles = []
@@ -166,8 +170,11 @@ while True:
                                [random.randint(400, width - 100), random.randint(400, height - 100)]
                 )]
                 
-        player.update(width, height)
-       
+        if len(stingers) < maxStingers:
+            for wasp in queenWasps:
+                if random.randint(0, 1 * 60) == 0:
+                    stingers += [Stinger(wasp)]
+                
         player.update(width, height)
         for butterfly in butterflys:
             butterfly.update(width, height)
