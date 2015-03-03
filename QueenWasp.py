@@ -10,7 +10,7 @@ class QueenWasp():
         self.speedx = speed[0]
         self.speedy = speed[0]
         self.speed = [self.speedx, self.speedy]
-        self.maxSpeed = 5
+        self.maxSpeed = 3
         self.place(pos)
         self.didBounceX = False
         self.didBounceY = False
@@ -19,13 +19,23 @@ class QueenWasp():
         self.healthbar = WaspHealthBar(self)
         self.life = True 
         self.maxLife = True
-        self.damage = 20
+        self.damage = 1
         self.health = 150
         self.didHit = False
         self.maxHealth = 150
         self.detectionRadius = 70
-        
-        
+        if math.fabs(self.speedx) > math.fabs(self.speedy):
+            if self.speedx > 0:
+                self.facing = "right"
+            else:
+                self.facing = "left"
+        else:
+            if self.speedy > 0:
+                self.facing = "down"
+            else:
+                self.facing = "up"
+    
+    
     def place(self, pos):
         self.rect.center = pos
         
@@ -37,6 +47,16 @@ class QueenWasp():
         return math.sqrt(((x2-x1)**2)+((y2-y1)**2))
         
     def update(self, width, height, player):
+        if math.fabs(self.speedx) > math.fabs(self.speedy):
+            if self.speedx > 0:
+                self.facing == "right"
+            else:
+                self.facing == "left"
+        else:
+            if self.speedy > 0:
+                self.facing == "down"
+            else:
+                self.facing == "up"
         self.didBounceX = False
         self.didBounceY = False
         self.speed = [self.speedx, self.speedy]
@@ -83,7 +103,29 @@ class QueenWasp():
                self.didBounceY = True
                #print "hit xWall"
         
-    
+    def animate(self):
+        if self.waitCount < self.maxWait:
+            self.waitCount += 1
+        else:
+            self.waitCount = 0
+            self.facingChanged = True
+            if self.frame < self.maxFrame:
+                self.frame += 1
+            else:
+                self.frame = 0
+        
+        if self.changed:    
+            if self.facing == "up":
+                self.images = self.upImages
+            elif self.facing == "down":
+                self.images = self.downImages
+            elif self.facing == "right":
+                self.images = self.rightImages
+            elif self.facing == "left":
+                self.images = self.leftImages
+            
+            self.image = self.images[self.frame]
+        
     '''def collideGust(self, other):
         if self != other:
             if self.rect.right > other.rect.left and self.rect.left < other.rect.right:

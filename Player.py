@@ -23,7 +23,7 @@ class Player():
         self.maxWait = 60*.25
         self.image = self.images[self.frame]
         self.rect = self.image.get_rect()
-        self.maxSpeed = 5
+        self.maxSpeed = 7
         self.speedx = 0
         self.speedy = 0
         self.speed = [self.speedx, self.speedy]

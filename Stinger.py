@@ -2,23 +2,23 @@ import math,sys,pygame
 
 class Stinger():
     def __init__(self,wasp):
-      
+        self.facing = wasp.facing
         if self.facing == "up":
-            self.image = pygame.image.load("rsc/Projectiles/gustu.png")
+            self.image = pygame.image.load("rsc/Projectiles/stinger.png")
             self.speed = [0, -5]
         elif self.facing == "down":
-            self.image = pygame.image.load("rsc/Projectiles/gustd.png")
+            self.image = pygame.image.load("rsc/Projectiles/stinger.png")
             self.speed = [0, 5]
         elif self.facing == "right":
-            self.image = pygame.image.load("rsc/Projectiles/gustr.png")
+            self.image = pygame.image.load("rsc/Projectiles/stinger.png")
             self.speed = [5, 0]
         elif self.facing == "left":
-            self.image = pygame.image.load("rsc/Projectiles/gustl.png")
+            self.image = pygame.image.load("rsc/Projectiles/stinger.png")
             self.speed = [-5, 0]
         self.rect = self.image.get_rect()
-        self.damage = 20
+        self.damage = 2
         self.place(wasp.rect.center)
-        self.radius = 20
+        self.radius = 2
         self.move()
         self.living = True
       
