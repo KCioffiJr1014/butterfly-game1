@@ -19,7 +19,7 @@ class Wasp():
         self.healthbar = WaspHealthBar(self)
         self.life = True 
         self.maxLife = True
-        self.damage = 1
+        self.damage = 50
         self.health = 80
         self.didHit = False
         self.maxHealth = 80
@@ -81,6 +81,13 @@ class Wasp():
                self.speedy = -self.speedy
                self.didBounceY = True
                #print "hit xWall"
+               
+    def attack(self, atk):
+        if atk == "stinger" and self.stingerCoolDown == 0:
+            self.stingering = True
+            self.stingerCoolDown = self.stingerCoolDownMax
+            return [Stinger(self)]
+        return []
         
     def collideWasp(self, other):
         if self != other:
