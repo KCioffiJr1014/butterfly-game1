@@ -2,7 +2,6 @@ import math,sys,pygame
 
 class Stinger():
     def __init__(self,wasp):
-        self.facing = wasp.facing
       
         if self.facing == "up":
             self.image = pygame.image.load("rsc/Projectiles/gustu.png")

@@ -19,11 +19,12 @@ class QueenWasp():
         self.healthbar = WaspHealthBar(self)
         self.life = True 
         self.maxLife = True
-        self.damage = 1
+        self.damage = 20
         self.health = 150
         self.didHit = False
         self.maxHealth = 150
         self.detectionRadius = 70
+        
         
     def place(self, pos):
         self.rect.center = pos
@@ -132,7 +133,7 @@ class QueenWasp():
         y2 = pt[1]
         return math.sqrt(((x2-x1)**2) + ((y2-y1)**2))
         
- 
+"""
 if __name__ == "__main__":
      
     pygame.init()
@@ -160,5 +161,5 @@ if __name__ == "__main__":
         screen.blit(wasp.image, wasp.rect)
         pygame.display.flip()
         clock.tick(60)
-    
+"""
     
