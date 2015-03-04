@@ -102,7 +102,7 @@ while True:
     queenWasps += [QueenWasp("rsc/Wasp/QueenWasp.png", [1, 2], [100, 125])]
     
     stingers = []
-    maxStingers = 1
+    maxStingers = 20
     
     
 
@@ -185,6 +185,8 @@ while True:
             queenWasp.update(width, height, player)
         for projectile in projectiles:
             projectile.update(width, height)
+        for stinger in stingers:
+            stinger.update(width, height)
 
         for bully in butterflys:
             for victem in butterflys:
@@ -230,7 +232,10 @@ while True:
         screen.blit(player.image, player.rect)        
         for projectile in projectiles:
             screen.blit(projectile.image, projectile.rect)
-        pygame.display.flip()
+        for stinger in stingers:
+            screen.blit(stinger.image, stinger.rect)
+            
+            pygame.display.flip()
         #print "draw:", time.time() - st
         clock.tick(60)
 

@@ -160,13 +160,10 @@ class QueenWasp():
                 if (self.distToPoint(attack.rect.center) < self.radius + attack.radius):
                     self.life -= attack.damage
                     self.healthbar.update()
-                print "Hit", self.life
                 if self.life <= 0:
                     self.health -= attack.damage
                     self.healthbar.update()
-                    print "Hit Done", self.health
-                    if self.health <= 0:
-                        self.living = False
+                    self.living = False
     
     def distance(self, pt):
         x1 = self.rect.center[0]
