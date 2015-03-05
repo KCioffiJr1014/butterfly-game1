@@ -66,7 +66,6 @@ while True:
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton2.release(event.pos):
                     running = False
-                    sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 startButton3.click(event.pos)
             if event.type == pygame.MOUSEBUTTONUP:
@@ -121,6 +120,8 @@ while True:
                     player.go("down")
                 elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("left")
+                elif event.key == pygame.K_o:
+                    sys.exit()
                 elif (event.key == pygame.K_e or event.key == pygame.K_j):
                     projectiles += player.attack("gust")
                 elif (event.key == pygame.K_e or event.key == pygame.K_k):
