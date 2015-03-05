@@ -46,6 +46,8 @@ class Stinger():
 					if (self.radius + other.radius) > self.distance(other.rect.center):
 						self.living = False
                         
+    
+                        
     def place(self, pt):
         self.rect.center = pt
         

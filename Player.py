@@ -116,6 +116,20 @@ class Player():
                     self.nodamage += 1
                     if self.nodamage == 25:
                         self.nodamage = 0
+                        
+    def stingerCollide(self, other, effect):
+        if (self.rect.right > stinger.rect.left 
+            and self.rect.left < stinger.rect.right):
+                if (self.rect.bottom > stinger.rect.top and 
+                    self.rect.top < stinger.rect.bottom):
+                    self.hurt = True
+                    if self.nodamage == 0:
+                        self.modifyHealth(-other.damage)
+                        effect.update(self.health, self.maxHealth) 
+                        print self.health
+                    self.nodamage += 1
+                    if self.nodamage == 25:
+                        self.nodamage = 0
     
     def animate(self):
         if self.waitCount < self.maxWait:

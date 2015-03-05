@@ -66,6 +66,7 @@ while True:
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton2.release(event.pos):
                     running = False
+                    
             if event.type == pygame.MOUSEBUTTONDOWN:
                 startButton3.click(event.pos)
             if event.type == pygame.MOUSEBUTTONUP:
@@ -102,7 +103,7 @@ while True:
     queenWasps += [QueenWasp("rsc/Wasp/QueenWasp.png", [1, 2], [100, 125])]
     
     stingers = []
-    maxStingers = 20
+    maxStingers = 40
     
     
 
@@ -194,18 +195,9 @@ while True:
                 bully.collidePlayer(player)
         for bully in wasps:
             for victem in wasps:
-                bully.collideWasp(victem)
+                #bully.collideWasp(victem)
                 player.enemyCollide(wasp,healthbar)
-            bully.collidePlayer(player)
-            for projectile in projectiles:
-                bully.collideGust(projectile)
-                if projectile.collideGust(bully):
-                    projectiles.remove(projectile)
-                bully.collideSpray(projectile)
-                if projectile.collideSpray(bully):
-                    projectiles.remove(projectile)
-                
-
+      
         for butterfly in butterflys:
             if not butterfly.living:
                 butterflys.remove(butterfly)
