@@ -66,6 +66,7 @@ while True:
             if event.type == pygame.MOUSEBUTTONUP:
                 if startButton2.release(event.pos):
                     running = False
+                    sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 startButton3.click(event.pos)
             if event.type == pygame.MOUSEBUTTONUP:
@@ -262,7 +263,7 @@ while True:
                 endButton.click(event.pos)
             if event.type == pygame.MOUSEBUTTONUP:
                 if endButton.release(event.pos):
-                    running = False
+                    running = True
                     player = Player([375,300])
             if event.type == pygame.MOUSEBUTTONDOWN:
                 endButton2.click(event.pos)
