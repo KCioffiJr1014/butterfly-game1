@@ -121,11 +121,11 @@ while True:
                     player.go("down")
                 elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                     player.go("left")
-                elif event.key == pygame.K_o:
+                elif event.key == pygame.K_p:
                     sys.exit()
-                elif (event.key == pygame.K_e or event.key == pygame.K_j):
+                elif (event.key == pygame.K_SPACE):
                     projectiles += player.attack("gust")
-                elif (event.key == pygame.K_e or event.key == pygame.K_k):
+                elif (event.key == pygame.K_RETURN):
                     projectiles += player.attack("spray")
                 elif (event.key == pygame.K_RALT or event.key == pygame.K_LALT):
                     altFlag = True
