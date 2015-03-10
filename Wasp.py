@@ -89,7 +89,7 @@ class Wasp():
             return [Stinger(self)]
         return []
         
-    '''def collideWasp(self, other):
+    def collideWasp(self, other):
         if self != other:
             if self.rect.right > other.rect.left and self.rect.left < other.rect.right:
                 if self.rect.bottom > other.rect.top and self.rect.top < other.rect.bottom:
@@ -108,7 +108,7 @@ class Wasp():
                             self.move(None)
                             self.didHit = True
                         return True
-            return False'''
+            return False
     
     '''def collideGust(self, other):
         if self != other:
@@ -138,6 +138,7 @@ class Wasp():
                     print "Hit Done", self.health
                     if self.health <= 0:
                         self.living = False
+                        
     def collideSpray(self, attack):
         if (self.rect.right > attack.rect.left and self.rect.left < attack.rect.right):
             if (self.rect.bottom > attack.rect.top and self.rect.top < attack.rect.bottom):

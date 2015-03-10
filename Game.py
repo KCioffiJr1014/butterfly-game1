@@ -197,8 +197,12 @@ while True:
                 bully.collidePlayer(player)
         for bully in wasps:
             for victem in wasps:
-                #bully.collideWasp(victem)
-                player.enemyCollide(wasp,healthbar)
+                bully.collideWasp(victem)
+            player.enemyCollide(bully,healthbar)
+            for projectile in projectiles:
+                bully.collideGust(bully)
+                bully.collideSpray(bully) 
+                
       
         for butterfly in butterflys:
             if not butterfly.living:
@@ -206,6 +210,7 @@ while True:
         for wasp in wasps:
             if not wasp.living:
                 wasps.remove(wasp)
+                
         for projectile in projectiles:
             if not projectile.living:
                 projectiles.remove(projectile)
