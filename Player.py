@@ -42,8 +42,8 @@ class Player():
         self.radius = 20
         self.didBounceX = False
         self.didBounceY = False
-        self.health = 150
-        self.maxHealth = 150
+        self.health = 250
+        self.maxHealth = 250
         self.nodamage = 0
         self.living = True
         self.place(pos)
