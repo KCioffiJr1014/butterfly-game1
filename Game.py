@@ -82,7 +82,7 @@ while True:
         screen.blit(startButton2.image, startButton2.rect)
         screen.blit(startButton3.image, startButton3.rect)
         pygame.display.flip()
-        
+          
 
     player = Player([375,300])
     #75 for both
@@ -134,7 +134,7 @@ while True:
                         fullscreen = pygame.FULLSCREEN
                     else:
                         fullscreen = 0
-                    screen = pygame.display.set_mode((width, height), fullscreen)
+                    screen = pygame.display.set_mode((width, height), fullscreen) 
                     pygame.display.flip()
 
             if event.type == pygame.KEYUP:
